@@ -34,4 +34,10 @@ public class Author {
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private Set<Book> books;
 
+    public Author(String firstName, String lastName, String email, ArrayList contact) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.contact = contact;
+    }
 }
