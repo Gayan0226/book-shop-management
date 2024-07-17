@@ -20,7 +20,7 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "author_id", length = 4)
-    int id;
+    int authorId;
     @Column(name = "first_name", length = 100, nullable = false)
     String firstName;
     @Column(name = "last_name", length = 100, nullable = false)

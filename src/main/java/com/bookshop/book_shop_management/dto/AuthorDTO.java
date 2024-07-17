@@ -17,7 +17,7 @@ import java.util.Set;
 public class AuthorDTO {
 
 
-    int id;
+    int authorId;
 
     String firstName;
 

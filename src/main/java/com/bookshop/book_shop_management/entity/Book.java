@@ -13,14 +13,14 @@ import lombok.NoArgsConstructor;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "book_id")
-    String id;
+    @Column(name = "isbn")
+    String isbnId;
     @Column(name = "book_category")
     String category;
     @Column(name = "book_name", length = 100, nullable = false)
     String name;
     @Column(name = "author_name")
-    double autorName;
+    String authorName;
     //get the foriegn  key from author table
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)

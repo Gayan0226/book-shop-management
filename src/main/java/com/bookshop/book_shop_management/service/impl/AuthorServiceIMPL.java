@@ -22,7 +22,7 @@ public class AuthorServiceIMPL implements AuthorService {
     @Override
     public String saveAuthorDetails(SaveAuthorDTO saveAuthorDTO) {
         Author author = authorMapper.dtoToEntity(saveAuthorDTO);
-        if (!authorREPO.existsById(author.getId())) {
+        if (!authorREPO.existsById(author.getAuthorId())) {
             return authorREPO.save(author).getFirstName();
         } else {
             throw new DuplicateValueAddException("Duplicate Add");
@@ -30,14 +30,10 @@ public class AuthorServiceIMPL implements AuthorService {
 
     }
 
-
     @Override
     public String updateNameContactEmailAuthorById(int id, RequestAuthorNameContactsUpdateDTO authorUpdateDTO) {
         if (authorREPO.existsById(id)) {
-            authorREPO.updateNameContactsById(
-                    authorUpdateDTO.getFirstName(),
-                    authorUpdateDTO.getEmail(),
-                    id);
+            authorREPO.updateNameContactsById(authorUpdateDTO.getFirstName(), authorUpdateDTO.getEmail(), id);
             return authorUpdateDTO.getFirstName();
         }
         throw new NotFoundException("Not Found Author for " + id);
@@ -45,15 +41,15 @@ public class AuthorServiceIMPL implements AuthorService {
 
     @Override
     public String updateAuthor(RequestUpdateAuthorDTO updateAuthorDTO) {
-        if (authorREPO.existsById(updateAuthorDTO.getId())) {
-            Author referenceById = authorREPO.getReferenceById(updateAuthorDTO.getId());
+        if (authorREPO.existsById(updateAuthorDTO.getAuthorId())) {
+            Author referenceById = authorREPO.getReferenceById(updateAuthorDTO.getAuthorId());
             referenceById.setFirstName(updateAuthorDTO.getFirstName());
+            referenceById.setLastName(updateAuthorDTO.getLastName());
             referenceById.setContact(updateAuthorDTO.getContact());
             referenceById.setEmail(updateAuthorDTO.getEmail());
             return authorREPO.save(referenceById).getFirstName();
-
         } else {
-            throw new NotFoundException("Not Found Author for " + updateAuthorDTO.getId());
+            throw new NotFoundException("Not Found Author for " + updateAuthorDTO.getAuthorId());
         }
     }
 

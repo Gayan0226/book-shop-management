@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @Data
 public class RequestUpdateAuthorDTO {
-    int id;
+    int authorId;
 
     String firstName;
 
