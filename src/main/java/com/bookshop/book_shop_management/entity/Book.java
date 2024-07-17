@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "book")
 public class Book {
     @Id
-            @Column(name = "book_id")
+    @Column(name = "book_id")
     String isbnId;
     @Column(name = "book_category")
     String category;

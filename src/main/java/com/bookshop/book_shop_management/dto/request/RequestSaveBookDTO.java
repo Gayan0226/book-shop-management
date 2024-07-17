@@ -12,12 +12,12 @@ import lombok.NoArgsConstructor;
 @Data
 public class RequestSaveBookDTO {
 
-    @NotEmpty
+    @NotEmpty(message = "ISBN ID is Required")
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "ISBN must contain only alphanumeric characters.")
     String isbnId;
     String category;
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "ISBN must contain only alphanumeric characters.")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "TItle must contain only alphanumeric characters.")
     String bookTitle;
 
 

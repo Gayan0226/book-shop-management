@@ -11,7 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Validated
 @RestController
 @RequestMapping("api/v1/book-controller")
 @CrossOrigin
@@ -23,7 +23,7 @@ public class BookController {
             params = {"authorId"}
     )
     public ResponseEntity<StandardResponse> saveBookDetails(
-            @RequestBody List<@Valid RequestSaveBookDTO> requestSaveBookDTOok,
+            @Valid @RequestBody List<RequestSaveBookDTO> requestSaveBookDTOok,
             @RequestParam(value = "authorId") int authorId
     ) {
         String saved =bookService.saveBookDetails(authorId,requestSaveBookDTOok);
