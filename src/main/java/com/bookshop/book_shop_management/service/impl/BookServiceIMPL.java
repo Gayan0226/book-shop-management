@@ -7,7 +7,6 @@ import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
 import com.bookshop.book_shop_management.reporsitory.BookREPO;
 import com.bookshop.book_shop_management.service.BookService;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +31,7 @@ public class BookServiceIMPL implements BookService {
            Book book = new Book(
                    r.getIsbnId(),
                    r.getCategory(),
-                   r.getBookName(),
+                   r.getBookTitle(),
                    author.get().getFirstName(),
                    author.get()
 

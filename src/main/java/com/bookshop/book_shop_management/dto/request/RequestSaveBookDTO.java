@@ -1,14 +1,11 @@
 package com.bookshop.book_shop_management.dto.request;
 
-import com.bookshop.book_shop_management.entity.Author;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import org.aspectj.bridge.IMessage;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,10 +13,12 @@ import org.aspectj.bridge.IMessage;
 public class RequestSaveBookDTO {
 
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-Z]+$\n", message = "(only contains simple and capital letters")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "ISBN must contain only alphanumeric characters.")
     String isbnId;
     String category;
-    String bookName;
+    @NotEmpty
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "ISBN must contain only alphanumeric characters.")
+    String bookTitle;
 
 
 }

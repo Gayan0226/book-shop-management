@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "book")
 public class Book {
     @Id
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "ISBN can only contain simple and capital letters")    @Column(name = "isbn")
+            @Column(name = "book_id")
     String isbnId;
     @Column(name = "book_category")
     String category;

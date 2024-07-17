@@ -23,7 +23,7 @@ public class BookController {
             params = {"authorId"}
     )
     public ResponseEntity<StandardResponse> saveBookDetails(
-            @Valid @RequestBody List<RequestSaveBookDTO> requestSaveBookDTOok,
+            @RequestBody List<@Valid RequestSaveBookDTO> requestSaveBookDTOok,
             @RequestParam(value = "authorId") int authorId
     ) {
         String saved =bookService.saveBookDetails(authorId,requestSaveBookDTOok);
