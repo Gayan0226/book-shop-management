@@ -3,9 +3,11 @@ package com.bookshop.book_shop_management.controller;
 import com.bookshop.book_shop_management.dto.request.RequestSaveBookDTO;
 import com.bookshop.book_shop_management.service.BookService;
 import com.bookshop.book_shop_management.util.StandardResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +23,7 @@ public class BookController {
             params = {"authorId"}
     )
     public ResponseEntity<StandardResponse> saveBookDetails(
-            @RequestBody List<RequestSaveBookDTO> requestSaveBookDTOok,
+            @Valid @RequestBody List<RequestSaveBookDTO> requestSaveBookDTOok,
             @RequestParam(value = "authorId") int authorId
     ) {
         String saved =bookService.saveBookDetails(authorId,requestSaveBookDTOok);
