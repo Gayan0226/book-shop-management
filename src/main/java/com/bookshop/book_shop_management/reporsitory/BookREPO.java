@@ -24,4 +24,7 @@ public interface BookREPO extends JpaRepository<Book, String> {
     Page<Book> findAllByCategoryEquals(String category, Pageable pageable);
 
     Optional<Book> findFirstByCategoryEquals(String category);
+
+    @Query(value = "SELECT * FROM book b WHERE b.book_id  LIKE CONCAT('%', ?1, '%')", nativeQuery = true)
+    Page<Book> findAllSea(String isbn, Pageable pageable);
 }

@@ -82,11 +82,11 @@ public class AuthorServiceIMPL implements AuthorService {
     public List<Author> getAllAuthors(int page) {
         Pageable pageable = PageRequest.of(page, 10);
         Page<Author> authors = authorREPO.findAll(pageable);
-        if (authors.getTotalElements() > 0 && page<=authors.getTotalPages()) {
+        if (authors.getTotalElements() > 0 && page <= authors.getTotalPages()) {
             return authors.getContent();
-        } else if(authors.getTotalPages()<=page) {
-           throw new PageIsOverException("Page number are is Not valid for Now");
-        }else{
+        } else if (authors.getTotalPages() <= page) {
+            throw new PageIsOverException("Page number are is Not valid for Now");
+        } else {
             throw new EmptyAuthorsException("There Is no Authors ");
         }
     }

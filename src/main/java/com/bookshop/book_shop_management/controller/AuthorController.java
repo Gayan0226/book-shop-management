@@ -22,12 +22,7 @@ import java.util.stream.Collectors;
 @RequestMapping("api/v1/author-controller")
 @CrossOrigin
 public class AuthorController {
-    /*
-    Authors
-GET /api/authors - Retrieve all authors
-GET /api/authors/{id} - Retrieve an author by ID
 
-    */
     @Autowired
     private AuthorService authorService;
 

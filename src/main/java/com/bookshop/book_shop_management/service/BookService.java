@@ -15,4 +15,10 @@ public interface BookService {
     Page<Book> getBooksByAuthorName(String category, int page);
 
     String deleteBookById(String id);
+
+    Book getBookById(String id);
+
+    Page<Book> getAllBokks(int page);
+
+    Page<Book> getBookBySearching(String isbn, int page);
 }

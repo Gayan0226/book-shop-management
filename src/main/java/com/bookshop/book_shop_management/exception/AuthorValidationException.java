@@ -17,19 +17,28 @@ public class AuthorValidationException {
     @ExceptionHandler(NotFoundBookException.class)
     public Map<String, Object> handleNotFoundBookException(NotFoundBookException e) {
         Map<String, Object> response = new HashMap<>();
-        response.put("message",e.getMessage());
+        response.put("message", e.getMessage());
         return response;
     }
+
     @ExceptionHandler(EmptyAuthorsException.class)
     public Map<String, Object> handleEmptyAuthorsException(EmptyAuthorsException e) {
         Map<String, Object> response = new HashMap<>();
-        response.put("message",e.getMessage());
+        response.put("message", e.getMessage());
         return response;
     }
+
     @ExceptionHandler(PageIsOverException.class)
     public Map<String, Object> handlePageIsOverException(PageIsOverException e) {
         Map<String, Object> response = new HashMap<>();
-        response.put("message",e.getMessage());
+        response.put("message", e.getMessage());
+        return response;
+    }
+
+    @ExceptionHandler(NotISBNException.class)
+    public Map<String, Object> handleNotISBNException(NotISBNException e) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", e.getMessage());
         return response;
     }
     @ExceptionHandler(NotFoundBookCategoryException.class)
