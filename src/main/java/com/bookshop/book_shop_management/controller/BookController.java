@@ -1,10 +1,14 @@
 package com.bookshop.book_shop_management.controller;
 
 import com.bookshop.book_shop_management.dto.request.RequestSaveBookDTO;
+import com.bookshop.book_shop_management.dto.request.RequestUpdateBookDetailsDto;
+import com.bookshop.book_shop_management.entity.Book;
+import com.bookshop.book_shop_management.exception.AuthorValidationException;
 import com.bookshop.book_shop_management.service.BookService;
 import com.bookshop.book_shop_management.util.StandardResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -19,6 +23,8 @@ import java.util.List;
 public class BookController {
     @Autowired
     private BookService bookService;
+    @Autowired
+    private AuthorValidationException authorValidationException;
 
     @PostMapping(
             path = {"/save-book"},
@@ -38,12 +44,15 @@ public class BookController {
         );
     }
 
-    @GetMapping(
+    @PutMapping(
             path = {"/update-book-details"},
             params = {"bookId"}
     )
-    public ResponseEntity<StandardResponse> updateBookDetails(@RequestParam(value = "bookId") String bookId) {
-        String updated =bookService.updateBookByBookId(bookId);
+    public ResponseEntity<StandardResponse> updateBookDetails(
+            @RequestParam(value = "bookId") String bookId,
+            @RequestBody @Valid RequestUpdateBookDetailsDto requestUpdateBook
+    ) {
+        String updated = bookService.updateBookByBookId(bookId, requestUpdateBook);
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(
                         200,
@@ -51,5 +60,17 @@ public class BookController {
                         "saved"
                 ), HttpStatus.OK
         );
+    }
+
+    @GetMapping(
+            path = {"books-name-page-by-category"},
+            params = {"category"}
+    )
+    public List<String> getBooksByAuthorName(
+            @RequestParam(value = "category") String category,
+            @RequestParam(value = "page") int page
+    ) {
+        Page<Book> booksName = bookService.getBooksByAuthorName(category, page);
+        return booksName.map(Book::getBookTitle).getContent();
     }
 }

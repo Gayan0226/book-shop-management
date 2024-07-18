@@ -1,20 +1,20 @@
 package com.bookshop.book_shop_management.dto.request;
 
-import com.bookshop.book_shop_management.entity.Author;
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class RequestUpdateBookDetailsDto {
-
-    String isbnId;
-
     String category;
-
-    String bookName;
-
+    @NotEmpty
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "TItle must contain only alphanumeric characters.")
+    String bookTitle;
+    @NotEmpty
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "only contains simple and capital letters")
     String authorName;
-    
-    private Author author;
 }

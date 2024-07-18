@@ -1,15 +1,19 @@
 package com.bookshop.book_shop_management.service.impl;
 
 import com.bookshop.book_shop_management.dto.request.RequestSaveBookDTO;
+import com.bookshop.book_shop_management.dto.request.RequestUpdateBookDetailsDto;
 import com.bookshop.book_shop_management.entity.Author;
 import com.bookshop.book_shop_management.entity.Book;
 import com.bookshop.book_shop_management.exception.AuthorNotFoundException;
-import com.bookshop.book_shop_management.exception.NotFoundException;
+import com.bookshop.book_shop_management.exception.NotFoundBookCategoryException;
 import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
 import com.bookshop.book_shop_management.reporsitory.BookREPO;
 import com.bookshop.book_shop_management.service.BookService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -47,6 +51,30 @@ public class BookServiceIMPL implements BookService {
             return author.get().getFirstName();
         } else {
             throw new AuthorNotFoundException("Author not Found");
+        }
+
+    }
+
+    @Override
+    public String updateBookByBookId(String bookId, RequestUpdateBookDetailsDto requestUpdateBook) {
+        Optional<Book> book = bookRepo.findById(bookId);
+        if (book.isPresent()) {
+            bookRepo.updateBookDetails(requestUpdateBook.getBookTitle(), requestUpdateBook.getAuthorName(), requestUpdateBook.getCategory(), bookId);
+            return bookId;
+        }
+        return null;
+    }
+
+    @Override
+    public Page<Book> getBooksByAuthorName(String category, int page) {
+        Pageable pageable = PageRequest.of(page, 10);
+        Optional<Book> books = bookRepo.findFirstByCategoryEquals(category);
+
+        if (books.isPresent()) {
+
+            return bookRepo.findAllByCategoryEquals(category, pageable);
+        } else {
+            throw new NotFoundBookCategoryException("There is no book category searching  you");
         }
 
     }

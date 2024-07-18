@@ -12,7 +12,12 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class AuthorValidationException {
-
+    @ExceptionHandler(NotFoundBookCategoryException.class)
+    public Map<String, Object> handleNotFoundBookCategoryException(NotFoundBookCategoryException e) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", e.getMessage());
+        return response;
+    }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -23,6 +28,7 @@ public class AuthorValidationException {
         });
         return errorMap;
     }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(AuthorNotFoundException.class)
     public Map<String, String> hendleException(AuthorNotFoundException ex) {

@@ -31,7 +31,7 @@ public class AuthorController {
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "Updated", update), HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping(path = {"/author-name-contacts-update"}, params = "id")
+    @PutMapping(path = {"/author-name-contacts-update"}, params = {"id"})
     public ResponseEntity<StandardResponse> updateAuthorById(@RequestParam(value = "id") int id, @RequestBody RequestAuthorNameContactsUpdateDTO authorUpdateDTO) {
         String update = authorService.updateNameContactEmailAuthorById(id, authorUpdateDTO);
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "Updated", update), HttpStatus.OK);

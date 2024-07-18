@@ -18,7 +18,7 @@ public class Book {
     @Column(name = "book_category")
     String category;
     @Column(name = "book_name", length = 100, nullable = false)
-    String bookName;
+    String bookTitle;
     @Column(name = "author_name")
     String authorName;
     //get the foriegn  key from author table
@@ -29,6 +29,6 @@ public class Book {
     public Book(String isbnId, String category, String bookName) {
         this.isbnId = isbnId;
         this.category = category;
-        this.bookName = bookName;
+        this.bookTitle = bookName;
     }
 }
