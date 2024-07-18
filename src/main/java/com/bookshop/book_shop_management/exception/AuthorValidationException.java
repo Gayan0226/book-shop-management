@@ -41,6 +41,7 @@ public class AuthorValidationException {
         response.put("message", e.getMessage());
         return response;
     }
+
     @ExceptionHandler(NotFoundBookCategoryException.class)
     public Map<String, Object> handleNotFoundBookCategoryException(NotFoundBookCategoryException e) {
         Map<String, Object> response = new HashMap<>();
@@ -83,7 +84,6 @@ public class AuthorValidationException {
             errorMap.put(constraintViolation.getPropertyPath().toString(), constraintViolation.getMessage());
         });
         return errorMap;
-
 
     }
 }

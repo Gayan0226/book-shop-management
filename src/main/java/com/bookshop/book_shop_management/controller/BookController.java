@@ -31,11 +31,6 @@ public class BookController {
     @Autowired
     private AuthorValidationException authorValidationException;
 
-
-    /*
-
-GET /api/books/search?isbn={isbn} - Search books by ISBN
-*/
     @PostMapping(path = {"/add-book"}, params = {"authorId"})
     public ResponseEntity<StandardResponse> saveBookDetails(@Valid @RequestBody List<RequestSaveBookDTO> requestSaveBookDTOok, @RequestParam(value = "authorId") int authorId) {
         String saved = bookService.saveBookDetails(authorId, requestSaveBookDTOok);
@@ -59,35 +54,27 @@ GET /api/books/search?isbn={isbn} - Search books by ISBN
         String delete = bookService.deleteBookById(id);
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "delete Books of author", delete), HttpStatus.OK);
     }
-    @GetMapping(
-            path = {"/book-by-id"},
-            params = {"id"}
-    )
+
+    @GetMapping(path = {"/book-by-id"}, params = {"id"})
     public ResponseEntity<StandardResponse> getBookById(@RequestParam(value = "id") String id) {
-        Book book =bookService.getBookById(id);
+        Book book = bookService.getBookById(id);
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "there IS books ", book), HttpStatus.OK);
     }
 
-    @GetMapping(
-            path = {"/all-books"},
-            params={"page"}
-    )
+    @GetMapping(path = {"/all-books"}, params = {"page"})
     public Page<Book> getAllBooks(@RequestParam(value = "page") int page) {
-        Page<Book> books =bookService.getAllBokks(page);
+        Page<Book> books = bookService.getAllBokks(page);
         List<String> bookList = new ArrayList<>();
-        for(Book book : books.stream().toList()){
+        for (Book book : books.stream().toList()) {
             bookList.add(book.getBookTitle());
         }
         return books;
     }
 
-    @GetMapping(
-            path={"/isbn-search"},
-            params = {"isbn","page"}
-    )
-    public Page<Book> getBookByISbnSearching(@RequestParam(value = "isbn")String isbn, @RequestParam(value = "page") int page) {
+    @GetMapping(path = {"/isbn-search"}, params = {"isbn", "page"})
+    public Page<Book> getBookByISbnSearching(@RequestParam(value = "isbn") String isbn, @RequestParam(value = "page") int page) {
 
-        Page<Book> books =bookService.getBookBySearching(isbn,page);
+        Page<Book> books = bookService.getBookBySearching(isbn, page);
         return books;
     }
 }
