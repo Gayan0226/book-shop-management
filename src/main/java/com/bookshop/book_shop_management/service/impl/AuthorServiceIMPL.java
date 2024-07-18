@@ -4,14 +4,18 @@ import com.bookshop.book_shop_management.dto.request.RequestAuthorNameContactsUp
 import com.bookshop.book_shop_management.dto.request.RequestUpdateAuthorDTO;
 import com.bookshop.book_shop_management.dto.request.SaveAuthorDTO;
 import com.bookshop.book_shop_management.entity.Author;
-import com.bookshop.book_shop_management.exception.AuthorNotFoundException;
-import com.bookshop.book_shop_management.exception.DuplicateValueAddException;
-import com.bookshop.book_shop_management.exception.NotFoundException;
+import com.bookshop.book_shop_management.exception.*;
 import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
 import com.bookshop.book_shop_management.service.AuthorService;
 import com.bookshop.book_shop_management.util.mapper.AuthorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AuthorServiceIMPL implements AuthorService {
@@ -61,6 +65,29 @@ public class AuthorServiceIMPL implements AuthorService {
             return true;
         } else {
             throw new AuthorNotFoundException("Not Found Author for " + id);
+        }
+    }
+
+    @Override
+    public Author getAuthorById(int id) {
+        Optional<Author> author = authorREPO.findById(id);
+        if (author.isPresent()) {
+            return authorREPO.findById(id).get();
+        } else {
+            throw new AuthorNotFoundException("Not Found Author for " + id);
+        }
+    }
+
+    @Override
+    public List<Author> getAllAuthors(int page) {
+        Pageable pageable = PageRequest.of(page, 10);
+        Page<Author> authors = authorREPO.findAll(pageable);
+        if (authors.getTotalElements() > 0 && page<=authors.getTotalPages()) {
+            return authors.getContent();
+        } else if(authors.getTotalPages()<=page) {
+           throw new PageIsOverException("Page number are is Not valid for Now");
+        }else{
+            throw new EmptyAuthorsException("There Is no Authors ");
         }
     }
 }

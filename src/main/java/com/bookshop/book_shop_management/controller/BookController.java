@@ -26,69 +26,28 @@ public class BookController {
     @Autowired
     private AuthorValidationException authorValidationException;
 
-    @PostMapping(
-            path = {"/save-book"},
-            params = {"authorId"}
-    )
-    public ResponseEntity<StandardResponse> saveBookDetails(
-            @Valid @RequestBody List<RequestSaveBookDTO> requestSaveBookDTOok,
-            @RequestParam(value = "authorId") int authorId
-    ) {
+    @PostMapping(path = {"/save-book"}, params = {"authorId"})
+    public ResponseEntity<StandardResponse> saveBookDetails(@Valid @RequestBody List<RequestSaveBookDTO> requestSaveBookDTOok, @RequestParam(value = "authorId") int authorId) {
         String saved = bookService.saveBookDetails(authorId, requestSaveBookDTOok);
-        return new ResponseEntity<StandardResponse>(
-                new StandardResponse(
-                        200,
-                        "saved Books of author",
-                        saved
-                ), HttpStatus.OK
-        );
+        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "saved Books of author", saved), HttpStatus.OK);
     }
 
-    @PutMapping(
-            path = {"/update-book-details"},
-            params = {"bookId"}
-    )
-    public ResponseEntity<StandardResponse> updateBookDetails(
-            @RequestParam(value = "bookId") String bookId,
-            @RequestBody @Valid RequestUpdateBookDetailsDto requestUpdateBook
-    ) {
+    @PutMapping(path = {"/update-book-details"}, params = {"bookId"})
+    public ResponseEntity<StandardResponse> updateBookDetails(@RequestParam(value = "bookId") String bookId, @RequestBody @Valid RequestUpdateBookDetailsDto requestUpdateBook) {
         String updated = bookService.updateBookByBookId(bookId, requestUpdateBook);
-        return new ResponseEntity<StandardResponse>(
-                new StandardResponse(
-                        200,
-                        "saved Books of author",
-                        "saved"
-                ), HttpStatus.OK
-        );
+        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "saved Books of author", "saved"), HttpStatus.OK);
     }
 
-    @GetMapping(
-            path = {"books-name-page-by-category"},
-            params = {"category"}
-    )
-    public List<String> getBooksByAuthorName(
-            @RequestParam(value = "category") String category,
-            @RequestParam(value = "page") int page
-    ) {
+    @GetMapping(path = {"books-name-page-by-category"}, params = {"category"})
+    public List<String> getBooksByAuthorName(@RequestParam(value = "category") String category, @RequestParam(value = "page") int page) {
         Page<Book> booksName = bookService.getBooksByAuthorName(category, page);
         return booksName.map(Book::getBookTitle).getContent();
     }
 
-    @DeleteMapping(
-            path = {"/delete-book-by-id"},
-            params = {"id"}
-    )
-    public ResponseEntity<StandardResponse> deleteBookById(
-            @RequestParam(value = "id") String id
-    ) {
+    @DeleteMapping(path = {"/delete-book-by-id"}, params = {"id"})
+    public ResponseEntity<StandardResponse> deleteBookById(@RequestParam(value = "id") String id) {
         String delete = bookService.deleteBookById(id);
-        return new ResponseEntity<StandardResponse>(
-                new StandardResponse(
-                        200,
-                        "delete Books of author",
-                        delete
-                ), HttpStatus.OK
-        );
+        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "delete Books of author", delete), HttpStatus.OK);
     }
 
 }
