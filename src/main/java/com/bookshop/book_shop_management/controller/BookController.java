@@ -37,4 +37,19 @@ public class BookController {
                 ), HttpStatus.OK
         );
     }
+
+    @GetMapping(
+            path = {"/update-book-details"},
+            params = {"bookId"}
+    )
+    public ResponseEntity<StandardResponse> updateBookDetails(@RequestParam(value = "bookId") String bookId) {
+        String updated =bookService.updateBookByBookId(bookId);
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(
+                        200,
+                        "saved Books of author",
+                        "saved"
+                ), HttpStatus.OK
+        );
+    }
 }
