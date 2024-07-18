@@ -73,4 +73,22 @@ public class BookController {
         Page<Book> booksName = bookService.getBooksByAuthorName(category, page);
         return booksName.map(Book::getBookTitle).getContent();
     }
+
+    @DeleteMapping(
+            path = {"/delete-book-by-id"},
+            params = {"id"}
+    )
+    public ResponseEntity<StandardResponse> deleteBookById(
+            @RequestParam(value = "id") String id
+    ) {
+        String delete = bookService.deleteBookById(id);
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(
+                        200,
+                        "delete Books of author",
+                        delete
+                ), HttpStatus.OK
+        );
+    }
+
 }

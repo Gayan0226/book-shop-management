@@ -13,4 +13,6 @@ public interface BookService {
     String updateBookByBookId(String bookId, RequestUpdateBookDetailsDto requestUpdateBook);
 
     Page<Book> getBooksByAuthorName(String category, int page);
+
+    String deleteBookById(String id);
 }

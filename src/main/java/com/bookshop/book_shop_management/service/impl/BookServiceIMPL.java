@@ -6,6 +6,7 @@ import com.bookshop.book_shop_management.entity.Author;
 import com.bookshop.book_shop_management.entity.Book;
 import com.bookshop.book_shop_management.exception.AuthorNotFoundException;
 import com.bookshop.book_shop_management.exception.NotFoundBookCategoryException;
+import com.bookshop.book_shop_management.exception.NotFoundBookException;
 import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
 import com.bookshop.book_shop_management.reporsitory.BookREPO;
 import com.bookshop.book_shop_management.service.BookService;
@@ -75,6 +76,19 @@ public class BookServiceIMPL implements BookService {
             return bookRepo.findAllByCategoryEquals(category, pageable);
         } else {
             throw new NotFoundBookCategoryException("There is no book category searching  you");
+        }
+
+    }
+
+    @Override
+    public String deleteBookById(String id) {
+        Optional<Book> book = bookRepo.findById(id);
+        if (book.isPresent()) {
+            bookRepo.deleteById(id);
+            return id;
+        }
+        else{
+            throw new NotFoundBookException("There is No book found");
         }
 
     }

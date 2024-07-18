@@ -2,6 +2,7 @@ package com.bookshop.book_shop_management.exception;
 
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,13 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class AuthorValidationException {
+
+    @ExceptionHandler(NotFoundBookException.class)
+    public Map<String, Object> handleNotFoundBookException(NotFoundBookException e) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("message",e.getMessage());
+        return response;
+    }
     @ExceptionHandler(NotFoundBookCategoryException.class)
     public Map<String, Object> handleNotFoundBookCategoryException(NotFoundBookCategoryException e) {
         Map<String, Object> response = new HashMap<>();
