@@ -23,6 +23,13 @@ public class AuthorValidationException {
         });
         return errorMap;
     }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(AuthorNotFoundException.class)
+    public Map<String, String> hendleException(AuthorNotFoundException ex) {
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("message", ex.getMessage());
+        return errorMap;
+    }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMessageNotReadableException.class)

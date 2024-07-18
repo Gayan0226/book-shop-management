@@ -4,6 +4,7 @@ import com.bookshop.book_shop_management.dto.request.RequestAuthorNameContactsUp
 import com.bookshop.book_shop_management.dto.request.RequestUpdateAuthorDTO;
 import com.bookshop.book_shop_management.dto.request.SaveAuthorDTO;
 import com.bookshop.book_shop_management.entity.Author;
+import com.bookshop.book_shop_management.exception.AuthorNotFoundException;
 import com.bookshop.book_shop_management.exception.DuplicateValueAddException;
 import com.bookshop.book_shop_management.exception.NotFoundException;
 import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
@@ -36,7 +37,7 @@ public class AuthorServiceIMPL implements AuthorService {
             authorREPO.updateNameContactsById(authorUpdateDTO.getFirstName(), authorUpdateDTO.getEmail(), id);
             return authorUpdateDTO.getFirstName();
         }
-        throw new NotFoundException("Not Found Author for " + id);
+        throw new AuthorNotFoundException("Not Found Author for " + id);
     }
 
     @Override
@@ -49,7 +50,7 @@ public class AuthorServiceIMPL implements AuthorService {
             referenceById.setEmail(updateAuthorDTO.getEmail());
             return authorREPO.save(referenceById).getFirstName();
         } else {
-            throw new NotFoundException("Not Found Author for " + updateAuthorDTO.getAuthorId());
+            throw new AuthorNotFoundException("Author not found for " + updateAuthorDTO.getAuthorId());
         }
     }
 
@@ -59,7 +60,7 @@ public class AuthorServiceIMPL implements AuthorService {
             authorREPO.deleteById(id);
             return true;
         } else {
-            throw new NotFoundException("Not Found Author for " + id);
+            throw new AuthorNotFoundException("Not Found Author for " + id);
         }
     }
 }
