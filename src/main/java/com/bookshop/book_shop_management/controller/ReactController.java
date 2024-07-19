@@ -25,9 +25,10 @@ public class ReactController {
     public ResponseEntity<StandardResponse> reactToBook(
             @RequestParam(value = "userId", defaultValue = "like") int userId,
             @RequestBody List<RequestUserToReactBookDTO> reacts) {
-        String reactBooks = reactService.setReactBook(reacts,userId);
+        String reactBooks = reactService.setReactBook(reacts, userId);
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "React successful", reactBooks), HttpStatus.OK);
     }
+
     @PostMapping(
             path = {"/react-to-book"},
             params = {"userId"}
@@ -35,14 +36,15 @@ public class ReactController {
     public ResponseEntity<StandardResponse> reactToBook(
             @RequestParam(value = "userId", defaultValue = "like") int userId,
             @RequestBody RequestUserToReactBookDTO reacts) {
-        String reactBooks = reactService.setReactOneBook(reacts,userId);
+        String reactBooks = reactService.setReactOneBook(reacts, userId);
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "React successful", reactBooks), HttpStatus.OK);
     }
+
     @GetMapping(
             path = {"/book-like-count"},
             params = {"isbn"}
     )
-    public ResponseEntity<StandardResponse> bookLikeCount(@RequestParam(value ="isbn") String isbn) {
+    public ResponseEntity<StandardResponse> bookLikeCount(@RequestParam(value = "isbn") String isbn) {
         int reactCount = reactService.getReactLikeCount(isbn);
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "React successful", reactCount), HttpStatus.OK);
     }
@@ -51,9 +53,23 @@ public class ReactController {
             path = {"/book-dislike-count"},
             params = {"isbn"}
     )
-    public ResponseEntity<StandardResponse> bookDisLikeCount(@RequestParam(value ="isbn") String isbn) {
+    public ResponseEntity<StandardResponse> bookDisLikeCount(@RequestParam(value = "isbn") String isbn) {
         int reactCount = reactService.getReactDisLikeCount(isbn);
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "React successful", reactCount), HttpStatus.OK);
+    }
+
+    @PutMapping(
+            path = {"/change-reaction"},
+            params = {"react", "isbn","userId"}
+    )
+    public ResponseEntity<StandardResponse> updateReact(
+            @RequestParam(value = "react") boolean react,
+            @RequestParam(value = "isbn") String isbn,
+            @RequestParam(value = "reactId") int reactId
+
+    ) {
+        String update = reactService.updateReact(react, isbn, reactId);
+        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "React successful", update), HttpStatus.OK);
     }
 
 }

@@ -12,4 +12,6 @@ public interface ReactService {
     int getReactLikeCount(String isbn);
 
     int getReactDisLikeCount(String isbn);
+
+    String updateReact(boolean react, String isbn,int userId);
 }

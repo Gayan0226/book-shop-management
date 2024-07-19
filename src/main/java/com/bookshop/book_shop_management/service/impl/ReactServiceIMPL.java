@@ -78,4 +78,10 @@ public class ReactServiceIMPL implements ReactService {
     public int getReactDisLikeCount(String isbn) {
         return reactRepo.getDisLikeCount(isbn);
     }
+
+    @Override
+    public String updateReact(boolean react, String isbn,int userId) {
+
+        return reactRepo.upadateValue(react,isbn,userId);
+    }
 }
