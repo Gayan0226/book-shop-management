@@ -15,7 +15,7 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long userId;
+    private int userId;
     @Column(name = "user_name", nullable = false, length = 50)
     private String userName;
     @Column(name = "password", nullable = false, length = 50)

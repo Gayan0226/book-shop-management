@@ -20,6 +20,12 @@ public class AuthorValidationException {
         response.put("message", e.getMessage());
         return response;
     }
+    @ExceptionHandler(InvalidReactException.class)
+    public Map<String, Object> handleNotFoundBookException(InvalidReactException e) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", e.getMessage());
+        return response;
+    }
     @ExceptionHandler(EmptyDetailsException.class)
     public Map<String, Object> handleEmptyDetailsException(EmptyDetailsException e) {
         Map<String, Object> response = new HashMap<>();

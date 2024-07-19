@@ -13,14 +13,13 @@ import lombok.extern.apachecommons.CommonsLog;
 public class React {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long reactId;
+    private int reactId;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id",nullable = false)
     private User user;
     @ManyToOne
-    @JoinColumn(name = "book_id")
+    @JoinColumn(name = "book_id",nullable = false)
     private Book bookReact;
     @Column(name ="react",columnDefinition = "TINYINT default 0")
     private boolean react;
-
 }
