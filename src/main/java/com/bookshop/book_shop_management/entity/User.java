@@ -22,6 +22,6 @@ public class User {
     private String password;
     @Column(name="user_contact")
     private String userContact;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "userId")
     private Set<React> react;
 }

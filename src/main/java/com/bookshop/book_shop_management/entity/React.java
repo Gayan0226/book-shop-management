@@ -16,10 +16,16 @@ public class React {
     private int reactId;
     @ManyToOne
     @JoinColumn(name = "user_id",nullable = false)
-    private User user;
+    private User userId;
     @ManyToOne
     @JoinColumn(name = "book_id",nullable = false)
     private Book bookReact;
     @Column(name ="react",columnDefinition = "TINYINT default 0")
     private boolean react;
+
+    public React(User userId, Book bookReact, boolean react) {
+        this.userId = userId;
+        this.bookReact = bookReact;
+        this.react = react;
+    }
 }

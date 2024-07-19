@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class RequestUserToReactBookDTO {
-    private int user;
+    private boolean react;
     private String bookReact;
 
 }

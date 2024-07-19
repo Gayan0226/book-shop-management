@@ -8,6 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.View;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -97,5 +98,11 @@ public class AuthorValidationException {
         });
         return errorMap;
 
+    }
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    public Map<String, String> hendleException(SQLIntegrityConstraintViolationException ex) {
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("message", "Please Enter the Valid ISBN for this");
+        return errorMap;
     }
 }
