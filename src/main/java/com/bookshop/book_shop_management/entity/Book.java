@@ -31,9 +31,13 @@ public class Book {
     @OneToMany(mappedBy = "bookReact")
     private Set<React> react;
 
-    public Book(String isbnId, String category, String bookName) {
+    public Book(String isbnId, String category, String bookTitle, String authorName, Author author) {
         this.isbnId = isbnId;
         this.category = category;
-        this.bookTitle = bookName;
+        this.bookTitle = bookTitle;
+        this.authorName = authorName;
+        this.author = author;
     }
+
+
 }
