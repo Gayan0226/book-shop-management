@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -25,6 +28,8 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
     private Author author;
+    @OneToMany(mappedBy = "bookReact")
+    private Set<React> react;
 
     public Book(String isbnId, String category, String bookName) {
         this.isbnId = isbnId;
