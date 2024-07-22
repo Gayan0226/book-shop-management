@@ -1,6 +1,7 @@
 package com.bookshop.book_shop_management.service.impl;
 
 import com.bookshop.book_shop_management.dto.request.RequestUserToReactBookDTO;
+import com.bookshop.book_shop_management.dto.responce.ResponseOrderBookByReact;
 import com.bookshop.book_shop_management.entity.Book;
 import com.bookshop.book_shop_management.entity.React;
 import com.bookshop.book_shop_management.entity.User;
@@ -13,6 +14,9 @@ import com.bookshop.book_shop_management.reporsitory.UserRepo;
 import com.bookshop.book_shop_management.service.ReactService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -100,5 +104,12 @@ public class ReactServiceIMPL implements ReactService {
             throw new InvalidReactException("there is Not Previous Reaction");
         }
 
+    }
+
+    @Override
+    public Page<ResponseOrderBookByReact> getOrderBookByReact(int page, int size) {
+        Pageable pageable= PageRequest.of(page,size);
+        Page<ResponseOrderBookByReact> reacts = reactRepo.findAllBookByReactOrder(pageable);
+        return reacts;
     }
 }

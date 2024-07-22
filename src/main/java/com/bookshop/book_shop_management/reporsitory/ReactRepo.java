@@ -1,7 +1,10 @@
 package com.bookshop.book_shop_management.reporsitory;
 
+import com.bookshop.book_shop_management.dto.responce.ResponseOrderBookByReact;
 import com.bookshop.book_shop_management.entity.React;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,4 +20,16 @@ public interface ReactRepo extends JpaRepository<React, Integer> {
     @Modifying
     @Query(value = "update  react r set r.react=?1 where r.book_id=?2 And r.react_id=?3", nativeQuery = true)
     int updateValue(boolean react, String isbn, int reactId);
+
+
+@Query(value = "SELECT r.book_id AS isbnId,COUNT(r.react)AS reactCount From react r where r.react=1 Group By r.book_id  ORDER BY reactCount desc ",nativeQuery = true)
+    Page<ResponseOrderBookByReact> findAllBookByReactOrder(Pageable pageable);
 }
+/*
+SELECT r.book_id AS bookId, COUNT(r.react_id) AS reactCount " +
+                   "FROM react r " +
+                   "WHERE r.react = 1 " +
+                   "GROUP BY r.book_id " +
+                   "ORDER BY reactCount DESC"
+
+*/

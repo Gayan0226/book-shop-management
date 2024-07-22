@@ -1,9 +1,12 @@
 package com.bookshop.book_shop_management.controller;
 
 import com.bookshop.book_shop_management.dto.request.RequestUserToReactBookDTO;
+import com.bookshop.book_shop_management.dto.responce.ResponseOrderBookByReact;
 import com.bookshop.book_shop_management.service.ReactService;
 import com.bookshop.book_shop_management.util.StandardResponse;
+import jakarta.validation.constraints.Max;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -70,6 +73,18 @@ public class ReactController {
     ) {
         int update = reactService.updateReact(react, isbn, reactId);
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "React successful", update), HttpStatus.OK);
+    }
+
+    @GetMapping(
+            path ={"/get-book-with-react"},
+            params = {"page","size"}
+    )
+    public ResponseEntity<StandardResponse> getBookWithReact(
+            @RequestParam(value = "page") int page,
+            @RequestParam(value = "size")@Max(15) int size
+    ){
+        Page<ResponseOrderBookByReact> pageReact =reactService.getOrderBookByReact(page,size);
+        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "React successful", pageReact), HttpStatus.OK);
     }
 
 }
