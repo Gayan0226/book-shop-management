@@ -22,7 +22,7 @@ public interface ReactRepo extends JpaRepository<React, Integer> {
     int updateValue(boolean react, String isbn, int reactId);
 
 
-@Query(value = "SELECT r.book_id AS isbnId,COUNT(r.react)AS reactCount From react r where r.react=1 Group By r.book_id  ORDER BY reactCount desc ",nativeQuery = true)
+@Query(value = "SELECT r.book_id AS isbnId,COUNT(r.react)AS reactCount ,a.first_name AS firstName,a.email AS email ,a.author_contact AS contact From react r JOIN book b ON r.book_id=b.book_id JOIN author a ON b.author_id =a.author_id where r.react=1 Group By r.book_id  ORDER BY reactCount desc ",nativeQuery = true)
     Page<ResponseOrderBookByReact> findAllBookByReactOrder(Pageable pageable);
 }
 /*
