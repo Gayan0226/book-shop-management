@@ -2,6 +2,7 @@ package com.bookshop.book_shop_management.service.impl;
 
 import com.bookshop.book_shop_management.dto.request.RequestUserToReactBookDTO;
 import com.bookshop.book_shop_management.dto.responce.ResponseOrderBookByReact;
+import com.bookshop.book_shop_management.dto.responce.ResponseToEmail;
 import com.bookshop.book_shop_management.entity.Book;
 import com.bookshop.book_shop_management.entity.React;
 import com.bookshop.book_shop_management.entity.User;
@@ -14,6 +15,8 @@ import com.bookshop.book_shop_management.reporsitory.UserRepo;
 import com.bookshop.book_shop_management.service.EmailService;
 import com.bookshop.book_shop_management.service.ReactService;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,12 +24,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ReactServiceIMPL implements ReactService {
+
     @Autowired
     private ReactRepo reactRepo;
     @Autowired
@@ -112,10 +114,22 @@ public class ReactServiceIMPL implements ReactService {
     }
 
     @Override
-    public List<ResponseOrderBookByReact> getEmailForSendMail() {
-        List<ResponseOrderBookByReact> page = reactRepo.getEmailToSendMail();
+    public List<ResponseToEmail> getEmailForSendMail() {
+
+        List<ResponseToEmail> page = reactRepo.getEmailToSendMail();
+
         if (page.size() > 0) {
-            return page.stream().toList();
+            Set<String> emailSet = new HashSet<>();
+            List<ResponseToEmail> uniqueEmails = new ArrayList<>();
+
+            for (ResponseToEmail response : page) {
+                if (emailSet.add(response.getEmailAuthor())) {
+                    uniqueEmails.add(response);
+                }
+            }
+
+            return uniqueEmails;
+
         } else {
             throw new NotFoundBookException("There is Not any email address");
         }

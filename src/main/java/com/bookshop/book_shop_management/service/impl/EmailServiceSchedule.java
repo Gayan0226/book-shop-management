@@ -1,6 +1,7 @@
 package com.bookshop.book_shop_management.service.impl;
 
 import com.bookshop.book_shop_management.dto.responce.ResponseOrderBookByReact;
+import com.bookshop.book_shop_management.dto.responce.ResponseToEmail;
 import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
 import com.bookshop.book_shop_management.reporsitory.BookREPO;
 import com.bookshop.book_shop_management.reporsitory.ReactRepo;
@@ -27,15 +28,12 @@ public class EmailServiceSchedule {
     private static final Logger log = LoggerFactory.getLogger(EmailServiceSchedule.class);
 
     @Scheduled(fixedRate = 30000)
-    public void sendMail() throws InterruptedException {
-        List<ResponseOrderBookByReact> reacts = reactService.getEmailForSendMail();
+    public void sendMail(){
+        List<ResponseToEmail> reacts = reactService.getEmailForSendMail();
         for (int i = 0; i < reacts.size(); i++) {
-            log.info("send Email "+reacts.get(i).getEmail());
-            Thread.sleep(200);
-            System.out.println(reacts.get(i).getEmail());
-            System.out.println(reacts.get(i).getReactCount());
-            emailService.sendMail(reacts.get(i).getEmail(), reacts.get(i).getFirstName(), "your Books React count is : " + reacts.get(i).getReactCount());
-            Thread.sleep(3000);
+            emailService.sendMail(reacts.get(i).getEmailAuthor(),"Inform React Count", "your Books React count is : " + reacts.get(i).getReactCountToEmail());
+
+
         }
     }
 }
