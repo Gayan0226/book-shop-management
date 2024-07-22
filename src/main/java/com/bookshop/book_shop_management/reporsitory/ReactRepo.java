@@ -15,6 +15,6 @@ public interface ReactRepo extends JpaRepository<React, Integer> {
     int getDisLikeCount(String isbn);
 
     @Modifying
-    @Query(value = "update from react r set r.react=?1 where r.book_id=?2 And r.react_id=?3", nativeQuery = true)
-    String upadateValue(boolean react, String isbn,int reactId);
+    @Query(value = "update  react r set r.react=?1 where r.book_id=?2 And r.react_id=?3", nativeQuery = true)
+    int updateValue(boolean react, String isbn, int reactId);
 }

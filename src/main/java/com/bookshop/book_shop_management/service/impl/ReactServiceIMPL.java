@@ -5,6 +5,8 @@ import com.bookshop.book_shop_management.entity.Book;
 import com.bookshop.book_shop_management.entity.React;
 import com.bookshop.book_shop_management.entity.User;
 import com.bookshop.book_shop_management.exception.AuthorNotFoundException;
+import com.bookshop.book_shop_management.exception.InvalidReactException;
+import com.bookshop.book_shop_management.exception.NotFoundBookException;
 import com.bookshop.book_shop_management.reporsitory.BookREPO;
 import com.bookshop.book_shop_management.reporsitory.ReactRepo;
 import com.bookshop.book_shop_management.reporsitory.UserRepo;
@@ -71,17 +73,32 @@ public class ReactServiceIMPL implements ReactService {
 
     @Override
     public int getReactLikeCount(String isbn) {
-        return reactRepo.getLikeCount(isbn);
+        Optional<Book> book = bookRepo.findById(isbn);
+        if (book.isPresent()) {
+            return reactRepo.getLikeCount(isbn);
+        } else {
+            throw new NotFoundBookException("There  not found Books this ID ");
+        }
+
     }
 
     @Override
     public int getReactDisLikeCount(String isbn) {
-        return reactRepo.getDisLikeCount(isbn);
+        Optional<Book> book = bookRepo.findById(isbn);
+        if (book.isPresent()) {
+            return reactRepo.getDisLikeCount(isbn);
+        } else {
+            throw new NotFoundBookException("There  not found Books this ID ");
+        }
     }
-
     @Override
-    public String updateReact(boolean react, String isbn,int userId) {
+    public int updateReact(boolean react, String isbn, int reactId) {
+        Optional<React> hasReact = reactRepo.findById(reactId);
+        if (hasReact.isPresent() && bookRepo.findById(isbn).isPresent()) {
+            return reactRepo.updateValue(react, isbn, reactId);
+        } else {
+            throw new InvalidReactException("there is Not Previous Reaction");
+        }
 
-        return reactRepo.upadateValue(react,isbn,userId);
     }
 }

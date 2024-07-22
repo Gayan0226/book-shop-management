@@ -46,7 +46,7 @@ public class ReactController {
     )
     public ResponseEntity<StandardResponse> bookLikeCount(@RequestParam(value = "isbn") String isbn) {
         int reactCount = reactService.getReactLikeCount(isbn);
-        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "React successful", reactCount), HttpStatus.OK);
+        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "Count Of Likes", reactCount), HttpStatus.OK);
     }
 
     @GetMapping(
@@ -55,12 +55,12 @@ public class ReactController {
     )
     public ResponseEntity<StandardResponse> bookDisLikeCount(@RequestParam(value = "isbn") String isbn) {
         int reactCount = reactService.getReactDisLikeCount(isbn);
-        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "React successful", reactCount), HttpStatus.OK);
+        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "Count Of DisLikes", reactCount), HttpStatus.OK);
     }
 
     @PutMapping(
             path = {"/change-reaction"},
-            params = {"react", "isbn","userId"}
+            params = {"react", "isbn","reactId"}
     )
     public ResponseEntity<StandardResponse> updateReact(
             @RequestParam(value = "react") boolean react,
@@ -68,7 +68,7 @@ public class ReactController {
             @RequestParam(value = "reactId") int reactId
 
     ) {
-        String update = reactService.updateReact(react, isbn, reactId);
+        int update = reactService.updateReact(react, isbn, reactId);
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "React successful", update), HttpStatus.OK);
     }
 
