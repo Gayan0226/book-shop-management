@@ -30,9 +30,9 @@ public class ReactController {
             params = {"userId"}
     )
     public ResponseEntity<StandardResponse> reactToAllBook(
-            @RequestParam(value = "userId", defaultValue = "like") int userId,
+            @RequestParam(value = "userId") int userId,
             @RequestBody List<RequestUserToReactBookDTO> reacts) {
-        String reactBooks = reactService.setReactBook(reacts, userId);
+        String reactBooks = reactService.setReactBook(reacts,userId);
         log.info("React to books Successful ");
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "React successful",reactBooks), HttpStatus.OK);
     }

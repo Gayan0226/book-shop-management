@@ -11,12 +11,14 @@ import com.bookshop.book_shop_management.exception.NotFoundBookException;
 import com.bookshop.book_shop_management.reporsitory.BookREPO;
 import com.bookshop.book_shop_management.reporsitory.ReactRepo;
 import com.bookshop.book_shop_management.reporsitory.UserRepo;
+import com.bookshop.book_shop_management.service.EmailService;
 import com.bookshop.book_shop_management.service.ReactService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,13 +29,10 @@ import java.util.Optional;
 public class ReactServiceIMPL implements ReactService {
     @Autowired
     private ReactRepo reactRepo;
-    @Autowired
-    private UserRepo userRepo;
+   @Autowired
+   private UserRepo userRepo;
     @Autowired
     private BookREPO bookRepo;
-    @Autowired
-    private ModelMapper modelMapper;
-
     @Override
     public String setReactBook(List<RequestUserToReactBookDTO> reacts, int userId) {
         Optional<User> user = userRepo.findById(userId);
@@ -95,6 +94,7 @@ public class ReactServiceIMPL implements ReactService {
             throw new NotFoundBookException("There  not found Books this ID ");
         }
     }
+
     @Override
     public int updateReact(boolean react, String isbn, int reactId) {
         Optional<React> hasReact = reactRepo.findById(reactId);
@@ -108,8 +108,24 @@ public class ReactServiceIMPL implements ReactService {
 
     @Override
     public Page<ResponseOrderBookByReact> getOrderBookByReact(int page, int size) {
-        Pageable pageable= PageRequest.of(page,size);
+        Pageable pageable = PageRequest.of(page, size);
         Page<ResponseOrderBookByReact> reacts = reactRepo.findAllBookByReactOrder(pageable);
+
         return reacts;
     }
+
+    @Override
+    public List<ResponseOrderBookByReact> getEmailForSendMail() {
+        List<ResponseOrderBookByReact> page =reactRepo.getEmail();
+        return page;
+    }
+//
+//    @Override
+//    public Page<ResponseOrderBookByReact> getEmailForSendMail() {
+//        Page<ResponseOrderBookByReact> reacts = reactRepo.getEmailForSendMail();
+//
+//        return reacts;
+//
+//    }
+
 }

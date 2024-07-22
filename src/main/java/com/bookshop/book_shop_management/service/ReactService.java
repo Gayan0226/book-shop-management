@@ -18,4 +18,8 @@ public interface ReactService {
     int updateReact(boolean react, String isbn,int reactId);
 
     Page<ResponseOrderBookByReact> getOrderBookByReact(int page, int size);
+
+    List<ResponseOrderBookByReact> getEmailForSendMail();
+
+//    Page<ResponseOrderBookByReact> getEmailForSendMail();
 }
