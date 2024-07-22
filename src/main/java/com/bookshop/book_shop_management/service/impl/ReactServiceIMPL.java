@@ -113,7 +113,7 @@ public class ReactServiceIMPL implements ReactService {
 
     @Override
     public List<ResponseOrderBookByReact> getEmailForSendMail() {
-        List<ResponseOrderBookByReact> page = reactRepo.getEmail();
+        List<ResponseOrderBookByReact> page = reactRepo.getEmailToSendMail();
         if (page.size() > 0) {
             return page.stream().toList();
         } else {

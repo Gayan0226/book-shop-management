@@ -26,14 +26,16 @@ public class EmailServiceSchedule {
 
     private static final Logger log = LoggerFactory.getLogger(EmailServiceSchedule.class);
 
-    @Scheduled(fixedRate = 3000)
-    public void sendMail() {
+    @Scheduled(fixedRate = 30000)
+    public void sendMail() throws InterruptedException {
         List<ResponseOrderBookByReact> reacts = reactService.getEmailForSendMail();
         for (int i = 0; i < reacts.size(); i++) {
-            emailService.sendMail(reacts.get(i).getEmail(), reacts.get(i).getFirstName(), "your Books count is : " + reacts.get(i).getReactCount());
-        }
-        for (ResponseOrderBookByReact react : reacts) {
-            emailService.sendMail(react.getEmail(), "React count ", "There Is all React For Your Book");
+            log.info("send Email "+reacts.get(i).getEmail());
+            Thread.sleep(200);
+            System.out.println(reacts.get(i).getEmail());
+            System.out.println(reacts.get(i).getReactCount());
+            emailService.sendMail(reacts.get(i).getEmail(), reacts.get(i).getFirstName(), "your Books React count is : " + reacts.get(i).getReactCount());
+            Thread.sleep(3000);
         }
     }
 }
