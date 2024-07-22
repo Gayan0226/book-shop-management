@@ -16,6 +16,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+
 @Component
 public class EmailServiceSchedule {
     @Autowired
@@ -28,12 +29,11 @@ public class EmailServiceSchedule {
     @Scheduled(fixedRate = 3000)
     public void sendMail() {
         List<ResponseOrderBookByReact> reacts = reactService.getEmailForSendMail();
-        for(int i=0;i<reacts.size();i++){
-            emailService.sendMail(reacts.get(i).getEmail(),reacts.get(i).getFirstName(),"yout count is"+reacts.get(i).getReactCount());
+        for (int i = 0; i < reacts.size(); i++) {
+            emailService.sendMail(reacts.get(i).getEmail(), reacts.get(i).getFirstName(), "your Books count is : " + reacts.get(i).getReactCount());
         }
-        for(ResponseOrderBookByReact react : reacts) {
-            emailService.sendMail(react.getEmail(),"React count ","There Is all React For Your Book");
+        for (ResponseOrderBookByReact react : reacts) {
+            emailService.sendMail(react.getEmail(), "React count ", "There Is all React For Your Book");
         }
-
     }
 }

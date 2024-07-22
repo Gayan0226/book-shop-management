@@ -21,12 +21,14 @@ public class AuthorValidationException {
         response.put("message", e.getMessage());
         return response;
     }
+
     @ExceptionHandler(InvalidReactException.class)
     public Map<String, Object> handleNotFoundBookException(InvalidReactException e) {
         Map<String, Object> response = new HashMap<>();
         response.put("message", e.getMessage());
         return response;
     }
+
     @ExceptionHandler(EmptyDetailsException.class)
     public Map<String, Object> handleEmptyDetailsException(EmptyDetailsException e) {
         Map<String, Object> response = new HashMap<>();
@@ -97,8 +99,8 @@ public class AuthorValidationException {
             errorMap.put(constraintViolation.getPropertyPath().toString(), constraintViolation.getMessage());
         });
         return errorMap;
-
     }
+
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public Map<String, String> hendleException(SQLIntegrityConstraintViolationException ex) {
         Map<String, String> errorMap = new HashMap<>();

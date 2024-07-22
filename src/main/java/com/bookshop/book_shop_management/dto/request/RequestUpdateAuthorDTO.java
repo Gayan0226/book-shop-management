@@ -11,12 +11,8 @@ import java.util.ArrayList;
 @Data
 public class RequestUpdateAuthorDTO {
     int authorId;
-
     String firstName;
-
     String lastName;
-
     String email;
-
     ArrayList contact;
 }

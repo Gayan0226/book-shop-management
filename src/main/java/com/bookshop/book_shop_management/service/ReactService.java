@@ -21,5 +21,4 @@ public interface ReactService {
 
     List<ResponseOrderBookByReact> getEmailForSendMail();
 
-//    Page<ResponseOrderBookByReact> getEmailForSendMail();
 }

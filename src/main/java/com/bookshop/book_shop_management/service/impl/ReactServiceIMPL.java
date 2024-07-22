@@ -29,10 +29,11 @@ import java.util.Optional;
 public class ReactServiceIMPL implements ReactService {
     @Autowired
     private ReactRepo reactRepo;
-   @Autowired
-   private UserRepo userRepo;
+    @Autowired
+    private UserRepo userRepo;
     @Autowired
     private BookREPO bookRepo;
+
     @Override
     public String setReactBook(List<RequestUserToReactBookDTO> reacts, int userId) {
         Optional<User> user = userRepo.findById(userId);
@@ -71,7 +72,6 @@ public class ReactServiceIMPL implements ReactService {
         } else {
             throw new AuthorNotFoundException("There  not found Users this ID ");
         }
-
     }
 
     @Override
@@ -82,7 +82,6 @@ public class ReactServiceIMPL implements ReactService {
         } else {
             throw new NotFoundBookException("There  not found Books this ID ");
         }
-
     }
 
     @Override
@@ -103,29 +102,22 @@ public class ReactServiceIMPL implements ReactService {
         } else {
             throw new InvalidReactException("there is Not Previous Reaction");
         }
-
     }
 
     @Override
     public Page<ResponseOrderBookByReact> getOrderBookByReact(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<ResponseOrderBookByReact> reacts = reactRepo.findAllBookByReactOrder(pageable);
-
         return reacts;
     }
 
     @Override
     public List<ResponseOrderBookByReact> getEmailForSendMail() {
-        List<ResponseOrderBookByReact> page =reactRepo.getEmail();
-        return page;
+        List<ResponseOrderBookByReact> page = reactRepo.getEmail();
+        if (page.size() > 0) {
+            return page.stream().toList();
+        } else {
+            throw new NotFoundBookException("There is Not any email address");
+        }
     }
-//
-//    @Override
-//    public Page<ResponseOrderBookByReact> getEmailForSendMail() {
-//        Page<ResponseOrderBookByReact> reacts = reactRepo.getEmailForSendMail();
-//
-//        return reacts;
-//
-//    }
-
 }

@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @RequestMapping("api/v1/author-controller")
 @CrossOrigin
 public class AuthorController {
-private static final Logger log = LoggerFactory.getLogger(AuthorController.class);
+    private static final Logger log = LoggerFactory.getLogger(AuthorController.class);
     @Autowired
     private AuthorService authorService;
 

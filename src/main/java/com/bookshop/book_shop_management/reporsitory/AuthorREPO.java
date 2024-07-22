@@ -17,6 +17,4 @@ public interface AuthorREPO extends JpaRepository<Author, Integer> {
     @Modifying
     @Query(value = "Update author a set a.first_name=?1,a.email=?2 where a.author_id=?3", nativeQuery = true)
     void updateNameContactsById(String firstName, String email, int id);
-
-
 }

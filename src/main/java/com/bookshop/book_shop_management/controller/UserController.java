@@ -20,14 +20,14 @@ import java.util.List;
 @CrossOrigin
 public class UserController {
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
-@Autowired
-private UserService userService;
+    @Autowired
+    private UserService userService;
     @Autowired
     private AuthorValidationException authorValidationException;
 
     @PostMapping("/user-registered")
     public ResponseEntity<StandardResponse> userRegister(@RequestBody RequestUserSaveDTO user) {
-        String save =userService.userRegister(user);
+        String save = userService.userRegister(user);
         log.info("User added: ");
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(

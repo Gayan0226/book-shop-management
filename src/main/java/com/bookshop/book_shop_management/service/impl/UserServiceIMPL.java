@@ -15,16 +15,15 @@ public class UserServiceIMPL implements UserService {
     private UserRepo userRepo;
     @Autowired
     ModelMapper modelMapper;
+
     @Override
     public String userRegister(RequestUserSaveDTO user) {
-        User userDetails =modelMapper.map(user,User.class);
-        if(userDetails!=null){
+        User userDetails = modelMapper.map(user, User.class);
+        if (userDetails != null) {
             userRepo.save(userDetails);
             return "add";
-        }
-        else{
+        } else {
             throw new EmptyDetailsException("Need fill all the details");
         }
-
     }
 }

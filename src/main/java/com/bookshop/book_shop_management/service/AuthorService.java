@@ -8,8 +8,6 @@ import com.bookshop.book_shop_management.entity.Author;
 import java.util.List;
 
 public interface AuthorService {
-
-
     String saveAuthorDetails(SaveAuthorDTO saveAuthorDTO);
 
     String updateNameContactEmailAuthorById(int id, RequestAuthorNameContactsUpdateDTO authorUpdateDTO);

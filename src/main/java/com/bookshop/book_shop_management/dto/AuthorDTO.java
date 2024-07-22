@@ -15,17 +15,10 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 public class AuthorDTO {
-
-
     int authorId;
-
     String firstName;
-
     String lastName;
-
     String email;
-
     ArrayList contact;
-
     private Set<Book> books;
 }

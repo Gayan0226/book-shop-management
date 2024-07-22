@@ -20,9 +20,7 @@ public class SaveAuthorDTO {
     @NotEmpty
     @Pattern(regexp = "^[a-zA-Z]+$", message = "only contains simple and capital letters")
     String lastName;
-
     @Email
     String email;
-
     ArrayList contact;
 }

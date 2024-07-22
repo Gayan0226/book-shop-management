@@ -91,7 +91,7 @@ public class BookServiceIMPL implements BookService {
         Pageable pageable = PageRequest.of(page, 10);
         Page<Book> books = bookRepo.findAll(pageable);
         System.out.println(books.getTotalPages());
-        if (books.getSize() > 0 && page<books.getTotalPages() ) {
+        if (books.getSize() > 0 && page < books.getTotalPages()) {
             return books;
         } else if (page > books.getTotalPages()) {
             throw new PageIsOverException("There's no more pages");
@@ -103,16 +103,13 @@ public class BookServiceIMPL implements BookService {
     @Override
     public Page<Book> getBookBySearching(String isbn, int page) {
         Pageable pageable = PageRequest.of(page, 10);
-        Page<Book> bookSearch =bookRepo.findAllSea(isbn,pageable);
-        if(bookSearch.getTotalElements()>0 && page<bookSearch.getTotalPages()){
+        Page<Book> bookSearch = bookRepo.findAllSea(isbn, pageable);
+        if (bookSearch.getTotalElements() > 0 && page < bookSearch.getTotalPages()) {
             return bookSearch;
-        }
-        else if(page>bookSearch.getTotalPages()){
+        } else if (page > bookSearch.getTotalPages()) {
             throw new PageIsOverException("There Is Not Available size page");
-        }
-        else{
+        } else {
             throw new NotISBNException("There Is No Books For this ISBN Searched");
         }
-
     }
 }
