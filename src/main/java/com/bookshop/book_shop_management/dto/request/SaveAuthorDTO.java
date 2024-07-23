@@ -21,6 +21,8 @@ public class SaveAuthorDTO {
     @Pattern(regexp = "^[a-zA-Z]+$", message = "only contains simple and capital letters")
     String lastName;
     @Email
+    @NotEmpty
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", message = "Invalid Email Type")
     String email;
     ArrayList contact;
 }

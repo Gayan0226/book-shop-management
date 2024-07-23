@@ -1,0 +1,9 @@
+Author unique vl---> email with .
+update time create Dateand time (all Table)
+react count change live 
+
+give catagory with enum
+boook table -delete author name
+
+get book by author(email)
+

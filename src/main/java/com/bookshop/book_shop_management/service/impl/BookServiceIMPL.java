@@ -34,7 +34,7 @@ public class BookServiceIMPL implements BookService {
         List<Book> books = new ArrayList<>();
         if (author.isPresent()) {
             for (RequestSaveBookDTO r : requestSaveBookDTOok) {
-                Book book = new Book(r.getIsbnId(), r.getCategory(), r.getBookTitle(), author.get().getFirstName(), author.get());
+                Book book = new Book(r.getIsbnId(), r.getCategory(), r.getBookTitle(), author.get());
                 books.add(book);
             }
             bookRepo.saveAll(books);
@@ -54,6 +54,7 @@ public class BookServiceIMPL implements BookService {
         return null;
     }
 
+    // TODO:
     @Override
     public Page<Book> getBooksByAuthorName(String category, int page) {
         Pageable pageable = PageRequest.of(page, 10);
@@ -90,7 +91,6 @@ public class BookServiceIMPL implements BookService {
     public Page<Book> getAllBokks(int page) {
         Pageable pageable = PageRequest.of(page, 10);
         Page<Book> books = bookRepo.findAll(pageable);
-        System.out.println(books.getTotalPages());
         if (books.getSize() > 0 && page < books.getTotalPages()) {
             return books;
         } else if (page > books.getTotalPages()) {
@@ -103,13 +103,13 @@ public class BookServiceIMPL implements BookService {
     @Override
     public Page<Book> getBookBySearching(String isbn, int page) {
         Pageable pageable = PageRequest.of(page, 10);
-        Page<Book> bookSearch = bookRepo.findAllSea(isbn, pageable);
+        Page<Book> bookSearch = bookRepo.findAllSearch(isbn, pageable);
         if (bookSearch.getTotalElements() > 0 && page < bookSearch.getTotalPages()) {
             return bookSearch;
         } else if (page > bookSearch.getTotalPages()) {
-            throw new PageIsOverException("There Is Not Available size page");
+            throw new PageIsOverException("Page not available!");
         } else {
-            throw new NotISBNException("There Is No Books For this ISBN Searched");
+            throw new NotISBNException("Invalid ISBN");
         }
     }
 }

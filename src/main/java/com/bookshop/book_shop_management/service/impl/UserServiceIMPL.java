@@ -5,16 +5,17 @@ import com.bookshop.book_shop_management.entity.User;
 import com.bookshop.book_shop_management.exception.EmptyDetailsException;
 import com.bookshop.book_shop_management.reporsitory.UserRepo;
 import com.bookshop.book_shop_management.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceIMPL implements UserService {
-    @Autowired
-    private UserRepo userRepo;
-    @Autowired
-    ModelMapper modelMapper;
+    private final UserRepo userRepo;
+    private final ModelMapper modelMapper;
+
 
     @Override
     public String userRegister(RequestUserSaveDTO user) {

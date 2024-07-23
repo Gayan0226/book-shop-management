@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -22,22 +23,34 @@ public class Book {
     String category;
     @Column(name = "book_name", length = 100, nullable = false)
     String bookTitle;
-    @Column(name = "author_name")
-    String authorName;
-    //get the foriegn  key from author table
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
     private Author author;
     @OneToMany(mappedBy = "bookReact")
     private Set<React> react;
+    @Column(name = "createTime")
+    private LocalDateTime createTime;
 
-    public Book(String isbnId, String category, String bookTitle, String authorName, Author author) {
+    @Column(name = "updateTime")
+    private LocalDateTime updateTime;
+
+    @PrePersist
+    protected void onCreate() {
+        if (createTime == null) {
+            createTime = LocalDateTime.now();
+        }
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        if (updateTime == null || updateTime.isBefore(LocalDateTime.now())) {
+            updateTime = LocalDateTime.now();
+        }
+    }
+    public Book(String isbnId, String category, String bookTitle, Author author) {
         this.isbnId = isbnId;
         this.category = category;
         this.bookTitle = bookTitle;
-        this.authorName = authorName;
         this.author = author;
     }
-
-
 }

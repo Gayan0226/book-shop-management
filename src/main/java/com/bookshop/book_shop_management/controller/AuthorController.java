@@ -21,18 +21,19 @@ import java.util.stream.Collectors;
 
 @Validated
 @RestController
-@RequestMapping("api/v1/author-controller")
+// TODO: REMOVE CONTROLLER
+@RequestMapping("api/v1/author")
 @CrossOrigin
 public class AuthorController {
     private static final Logger log = LoggerFactory.getLogger(AuthorController.class);
     @Autowired
     private AuthorService authorService;
 
-    @PostMapping(path = {"/add-author"})
+    @PostMapping()
     public ResponseEntity<StandardResponse> saveAuthor(@RequestBody @Valid SaveAuthorDTO saveAuthorDTO) {
         String authorName = authorService.saveAuthorDetails(saveAuthorDTO);
         log.info("Author added: ");
-        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "Add successfull", authorName), HttpStatus.CREATED);
+        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "Add successful", authorName), HttpStatus.OK);
     }
 
     @PutMapping(path = {"/author-update-by-id"})

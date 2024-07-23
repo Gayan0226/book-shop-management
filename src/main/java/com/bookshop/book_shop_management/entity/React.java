@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.apachecommons.CommonsLog;
+
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -22,7 +25,25 @@ public class React {
     private Book bookReact;
     @Column(name ="react",columnDefinition = "TINYINT default 0")
     private boolean react;
+    @Column(name = "createTime")
+    private LocalDateTime createTime;
 
+    @Column(name = "updateTime")
+    private LocalDateTime updateTime;
+
+    @PrePersist
+    protected void onCreate() {
+        if (createTime == null) {
+            createTime = LocalDateTime.now();
+        }
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        if (updateTime == null || updateTime.isBefore(LocalDateTime.now())) {
+            updateTime = LocalDateTime.now();
+        }
+    }
     public React(User userId, Book bookReact, boolean react) {
         this.userId = userId;
         this.bookReact = bookReact;

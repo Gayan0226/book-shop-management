@@ -8,6 +8,9 @@ import com.bookshop.book_shop_management.exception.*;
 import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
 import com.bookshop.book_shop_management.service.AuthorService;
 import com.bookshop.book_shop_management.util.mapper.AuthorMapper;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,19 +21,20 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class AuthorServiceIMPL implements AuthorService {
-    @Autowired
-    private AuthorMapper authorMapper;
-    @Autowired
-    private AuthorREPO authorREPO;
+    private final AuthorMapper authorMapper;
+    private final AuthorREPO authorREPO;
+    private final Logger log = LoggerFactory.getLogger(AuthorServiceIMPL.class);
 
     @Override
     public String saveAuthorDetails(SaveAuthorDTO saveAuthorDTO) {
         Author author = authorMapper.dtoToEntity(saveAuthorDTO);
         if (!authorREPO.existsById(author.getAuthorId())) {
-            return authorREPO.save(author).getFirstName();
+                log.info("Come ");
+                return authorREPO.save(author).getFirstName();
         } else {
-            throw new DuplicateValueAddException("Duplicate Add");
+            throw new DuplicateValueAddException("Duplicate Author! ");
         }
     }
 

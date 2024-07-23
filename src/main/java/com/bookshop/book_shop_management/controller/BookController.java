@@ -29,10 +29,13 @@ import java.util.stream.Collectors;
 @CrossOrigin
 public class BookController {
     private static final Logger log = LoggerFactory.getLogger(BookController.class);
-    @Autowired
-    private BookService bookService;
-    @Autowired
-    private AuthorValidationException authorValidationException;
+    private final BookService bookService;
+    private final AuthorValidationException authorValidationException;
+
+    public BookController(BookService bookService, AuthorValidationException authorValidationException) {
+        this.bookService = bookService;
+        this.authorValidationException = authorValidationException;
+    }
 
     @PostMapping(path = {"/add-book"}, params = {"authorId"})
     public ResponseEntity<StandardResponse> saveBookDetails(@Valid @RequestBody List<RequestSaveBookDTO> requestSaveBookDTOok, @RequestParam(value = "authorId") int authorId) {

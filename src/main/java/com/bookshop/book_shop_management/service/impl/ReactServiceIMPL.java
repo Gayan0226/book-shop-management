@@ -44,7 +44,7 @@ public class ReactServiceIMPL implements ReactService {
             for (RequestUserToReactBookDTO r : reacts) {
                 Book book = bookRepo.getReferenceById(r.getBookReact());
                 String bookIdAvailable = book.getIsbnId();
-                if (r.getBookReact() == bookIdAvailable) {
+                if (Objects.equals(r.getBookReact(), bookIdAvailable)) {
                     React newReact = new React(user.get(), book, r.isReact());
                     reactsAll.add(newReact);
                 } else {
@@ -54,7 +54,7 @@ public class ReactServiceIMPL implements ReactService {
             reactRepo.saveAll(reactsAll);
             return "React Successfully Added !";
         } else {
-            throw new AuthorNotFoundException("There  not found Users this ID ");
+            throw new AuthorNotFoundException("User not found");
         }
     }
 

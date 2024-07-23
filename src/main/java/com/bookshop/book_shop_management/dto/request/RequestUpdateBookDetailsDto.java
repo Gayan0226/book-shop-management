@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class RequestUpdateBookDetailsDto {
     String category;
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "TItle must contain only alphanumeric characters.")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Title must contain only alphanumeric characters.")
     String bookTitle;
     @NotEmpty
     @Pattern(regexp = "^[a-zA-Z]+$", message = "only contains simple and capital letters")

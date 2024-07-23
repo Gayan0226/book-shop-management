@@ -14,49 +14,49 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class AuthorValidationException {
-
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(NotFoundBookException.class)
     public Map<String, Object> handleNotFoundBookException(NotFoundBookException e) {
         Map<String, Object> response = new HashMap<>();
         response.put("message", e.getMessage());
         return response;
     }
-
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(InvalidReactException.class)
     public Map<String, Object> handleNotFoundBookException(InvalidReactException e) {
         Map<String, Object> response = new HashMap<>();
         response.put("message", e.getMessage());
         return response;
     }
-
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(EmptyDetailsException.class)
     public Map<String, Object> handleEmptyDetailsException(EmptyDetailsException e) {
         Map<String, Object> response = new HashMap<>();
         response.put("message", e.getMessage());
         return response;
     }
-
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(EmptyAuthorsException.class)
     public Map<String, Object> handleEmptyAuthorsException(EmptyAuthorsException e) {
         Map<String, Object> response = new HashMap<>();
         response.put("message", e.getMessage());
         return response;
     }
-
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(PageIsOverException.class)
     public Map<String, Object> handlePageIsOverException(PageIsOverException e) {
         Map<String, Object> response = new HashMap<>();
         response.put("message", e.getMessage());
         return response;
     }
-
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(NotISBNException.class)
     public Map<String, Object> handleNotISBNException(NotISBNException e) {
         Map<String, Object> response = new HashMap<>();
         response.put("message", e.getMessage());
         return response;
     }
-
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(NotFoundBookCategoryException.class)
     public Map<String, Object> handleNotFoundBookCategoryException(NotFoundBookCategoryException e) {
         Map<String, Object> response = new HashMap<>();
@@ -100,11 +100,11 @@ public class AuthorValidationException {
         });
         return errorMap;
     }
-
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public Map<String, String> hendleException(SQLIntegrityConstraintViolationException ex) {
         Map<String, String> errorMap = new HashMap<>();
-        errorMap.put("message", "Please Enter the Valid ISBN for this");
+        errorMap.put("message", ex.getLocalizedMessage());
         return errorMap;
     }
 }
