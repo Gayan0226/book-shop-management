@@ -2,17 +2,14 @@ package com.bookshop.book_shop_management.controller;
 
 import com.bookshop.book_shop_management.dto.request.RequestSaveBookDTO;
 import com.bookshop.book_shop_management.dto.request.RequestUpdateBookDetailsDto;
-import com.bookshop.book_shop_management.entity.Author;
 import com.bookshop.book_shop_management.entity.Book;
 import com.bookshop.book_shop_management.exception.AuthorValidationException;
-import com.bookshop.book_shop_management.exception.PageIsOverException;
-import com.bookshop.book_shop_management.reporsitory.BookREPO;
 import com.bookshop.book_shop_management.service.BookService;
 import com.bookshop.book_shop_management.util.StandardResponse;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,21 +18,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-//TODo the Book Controller And it details Changing  
+
 @Validated
 @RestController
-@RequestMapping("api/v1/book-controller")
+@RequestMapping("api/v1/book")
 @CrossOrigin
+@RequiredArgsConstructor
 public class BookController {
     private static final Logger log = LoggerFactory.getLogger(BookController.class);
     private final BookService bookService;
     private final AuthorValidationException authorValidationException;
-
-    public BookController(BookService bookService, AuthorValidationException authorValidationException) {
-        this.bookService = bookService;
-        this.authorValidationException = authorValidationException;
-    }
 
     @PostMapping(path = {"/add-book"}, params = {"authorId"})
     public ResponseEntity<StandardResponse> saveBookDetails(@Valid @RequestBody RequestSaveBookDTO requestSaveBookDTOok, @RequestParam(value = "authorId") int authorId) {
