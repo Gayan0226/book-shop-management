@@ -30,12 +30,21 @@ public class AuthorServiceIMPL implements AuthorService {
     @Override
     public String saveAuthorDetails(SaveAuthorDTO saveAuthorDTO) {
         Author author = authorMapper.dtoToEntity(saveAuthorDTO);
-        if (!authorREPO.existsById(author.getAuthorId())) {
+       List< Author> allAuthor =authorREPO.findAll();
+
+            boolean emailHave=false;
+            for (Author a : allAuthor) {
+                emailHave= author.getEmail().equals(a.getEmail());
+                System.out.println(emailHave);
+            }
+            if(!emailHave){
                 log.info("Come ");
                 return authorREPO.save(author).getFirstName();
-        } else {
-            throw new DuplicateValueAddException("Duplicate Author! ");
-        }
+            }else{
+                throw new DuplicateValueAddException("Duplicated Author !");
+            }
+
+
     }
 
     @Override

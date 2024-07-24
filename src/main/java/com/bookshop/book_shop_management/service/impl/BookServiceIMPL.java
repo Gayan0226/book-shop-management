@@ -4,10 +4,12 @@ import com.bookshop.book_shop_management.dto.request.RequestSaveBookDTO;
 import com.bookshop.book_shop_management.dto.request.RequestUpdateBookDetailsDto;
 import com.bookshop.book_shop_management.entity.Author;
 import com.bookshop.book_shop_management.entity.Book;
+import com.bookshop.book_shop_management.entity.enums.BookCateGoryType;
 import com.bookshop.book_shop_management.exception.*;
 import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
 import com.bookshop.book_shop_management.reporsitory.BookREPO;
 import com.bookshop.book_shop_management.service.BookService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,26 +21,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class BookServiceIMPL implements BookService {
-    @Autowired
-    private ModelMapper modelMapper;
-    @Autowired
-    private AuthorREPO authorRepo;
-    @Autowired
-    private BookREPO bookRepo;
+
+    private final ModelMapper modelMapper;
+
+    private final AuthorREPO authorRepo;
+
+    private final BookREPO bookRepo;
 
     @Override
-    public String saveBookDetails(int authorId, List<RequestSaveBookDTO> requestSaveBookDTOok) {
+    public String saveBookDetails(int authorId, RequestSaveBookDTO requestSaveBookDTOok) {
         Optional<Author> author = authorRepo.findById(authorId);
-        List<Book> books = new ArrayList<>();
         if (author.isPresent()) {
-            for (RequestSaveBookDTO r : requestSaveBookDTOok) {
-                Book book = new Book(r.getIsbnId(), r.getCategory(), r.getBookTitle(), author.get());
-                books.add(book);
+            Book book = modelMapper.map(requestSaveBookDTOok, Book.class);
+            Optional<Book> bookHave = bookRepo.findById(requestSaveBookDTOok.getIsbnId());
+            if (!bookHave.isPresent()) {
+                try {
+                    BookCateGoryType categoryType = BookCateGoryType.valueOf(requestSaveBookDTOok.getCategory().toUpperCase());
+                    book.setAuthor(author.get());
+                    book.setCategory(categoryType);
+                    bookRepo.save(book);
+                    return author.get().getFirstName();
+                } catch (IllegalArgumentException e) {
+                    throw new NotFoundBookException("Category not found");
+                }
+            } else {
+                throw new DuplicateValueAddException("Books already exist");
             }
-            bookRepo.saveAll(books);
-            return author.get().getFirstName();
         } else {
             throw new AuthorNotFoundException("Author not Found");
         }
@@ -48,7 +59,7 @@ public class BookServiceIMPL implements BookService {
     public String updateBookByBookId(String bookId, RequestUpdateBookDetailsDto requestUpdateBook) {
         Optional<Book> book = bookRepo.findById(bookId);
         if (book.isPresent()) {
-            bookRepo.updateBookDetails(requestUpdateBook.getBookTitle(), requestUpdateBook.getAuthorName(), requestUpdateBook.getCategory(), bookId);
+            bookRepo.updateBookDetails(requestUpdateBook.getBookTitle(), requestUpdateBook.getCategory(), bookId);
             return bookId;
         }
         return null;

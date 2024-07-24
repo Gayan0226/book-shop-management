@@ -1,5 +1,6 @@
 package com.bookshop.book_shop_management.entity;
 
+import com.bookshop.book_shop_management.entity.enums.BookCateGoryType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -19,8 +20,9 @@ public class Book {
     @Id
     @Column(name = "book_id")
     String isbnId;
-    @Column(name = "book_category")
-    String category;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "book_category",nullable = false)
+    BookCateGoryType category;
     @Column(name = "book_name", length = 100, nullable = false)
     String bookTitle;
     @ManyToOne
@@ -47,7 +49,8 @@ public class Book {
             updateTime = LocalDateTime.now();
         }
     }
-    public Book(String isbnId, String category, String bookTitle, Author author) {
+
+    public Book(String isbnId, BookCateGoryType category, String bookTitle, Author author) {
         this.isbnId = isbnId;
         this.category = category;
         this.bookTitle = bookTitle;

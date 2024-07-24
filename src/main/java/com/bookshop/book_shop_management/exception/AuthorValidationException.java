@@ -21,6 +21,12 @@ public class AuthorValidationException {
         response.put("message", e.getMessage());
         return response;
     }
+    @ExceptionHandler(DuplicateValueAddException.class)
+    public Map<String, Object> handleDuplicateValueAddException(DuplicateValueAddException e) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", e.getMessage());
+        return response;
+    }
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(InvalidReactException.class)
     public Map<String, Object> handleNotFoundBookException(InvalidReactException e) {

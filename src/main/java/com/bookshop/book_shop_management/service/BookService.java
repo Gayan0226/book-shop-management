@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 public interface BookService {
-    String saveBookDetails(int authorId, List<RequestSaveBookDTO> requestSaveBookDTOok);
+    String saveBookDetails(int authorId, RequestSaveBookDTO requestSaveBookDTOok);
 
     String updateBookByBookId(String bookId, RequestUpdateBookDetailsDto requestUpdateBook);
 

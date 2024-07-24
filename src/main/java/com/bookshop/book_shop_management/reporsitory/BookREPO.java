@@ -17,8 +17,8 @@ import java.util.Optional;
 @Transactional
 public interface BookREPO extends JpaRepository<Book, String> {
     @Modifying
-    @Query(value = "update book b set b.book_name=?1, b.author_name=?2 ,b.book_category=?3 where b.book_id =?4", nativeQuery = true)
-    void updateBookDetails(String bookName, String authorName, String category, String bookId);
+    @Query(value = "update book b set b.book_name=?1,b.book_category=?2 where b.book_id =?3", nativeQuery = true)
+    void updateBookDetails(String bookName, String category, String bookId);
 
     Page<Book> findAllByCategoryEquals(String category, Pageable pageable);
 

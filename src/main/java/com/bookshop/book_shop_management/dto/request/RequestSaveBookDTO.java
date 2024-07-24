@@ -15,6 +15,7 @@ public class RequestSaveBookDTO {
     @NotEmpty(message = "ISBN ID is Required")
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "ISBN must contain only alphanumeric characters.")
     String isbnId;
+    @NotEmpty
     String category;
     @NotEmpty
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Title must contain only alphanumeric characters.")

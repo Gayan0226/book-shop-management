@@ -38,7 +38,7 @@ public class BookController {
     }
 
     @PostMapping(path = {"/add-book"}, params = {"authorId"})
-    public ResponseEntity<StandardResponse> saveBookDetails(@Valid @RequestBody List<RequestSaveBookDTO> requestSaveBookDTOok, @RequestParam(value = "authorId") int authorId) {
+    public ResponseEntity<StandardResponse> saveBookDetails(@Valid @RequestBody RequestSaveBookDTO requestSaveBookDTOok, @RequestParam(value = "authorId") int authorId) {
         String saved = bookService.saveBookDetails(authorId, requestSaveBookDTOok);
         log.info("Book added: ");
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "saved Books of author", saved), HttpStatus.OK);
