@@ -2,6 +2,8 @@ package com.bookshop.book_shop_management.controller;
 
 import com.bookshop.book_shop_management.dto.request.RequestSaveBookDTO;
 import com.bookshop.book_shop_management.dto.request.RequestUpdateBookDetailsDto;
+import com.bookshop.book_shop_management.dto.responce.RequestAllBookByCategory;
+import com.bookshop.book_shop_management.dto.responce.ResponseBookSearchByAuthorEmail;
 import com.bookshop.book_shop_management.entity.Book;
 import com.bookshop.book_shop_management.exception.AuthorValidationException;
 import com.bookshop.book_shop_management.service.BookService;
@@ -36,28 +38,28 @@ public class BookController {
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "saved Books of author", saved), HttpStatus.OK);
     }
 
-    @PutMapping(path = {"/update-book-details"}, params = {"bookId"})
+    @PutMapping(path = {"/book"}, params = {"bookId"})
     public ResponseEntity<StandardResponse> updateBookDetails(@RequestParam(value = "bookId") String bookId, @RequestBody @Valid RequestUpdateBookDetailsDto requestUpdateBook) {
         String updated = bookService.updateBookByBookId(bookId, requestUpdateBook);
         log.info("Book Updated: ");
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "saved Books of author", "saved"), HttpStatus.OK);
     }
 
-    @GetMapping(path = {"books-name-page-by-category"}, params = {"category"})
-    public List<String> getBooksByAuthorName(@RequestParam(value = "category") String category, @RequestParam(value = "page") int page) {
-        Page<Book> booksName = bookService.getBooksByAuthorName(category, page);
-        log.info("Book get Like Page By category: ");
-        return booksName.map(Book::getBookTitle).getContent();
+    @GetMapping(path = {"/book-author-email"}, params = {"email"})
+    public Page<ResponseBookSearchByAuthorEmail>  getBookByAuthorEmail(@RequestParam(value = "email") String email, @RequestParam(value = "page") int page) {
+        Page<ResponseBookSearchByAuthorEmail> books = bookService.getBooksByAuthorName(email, page);
+        log.info("Book get Like Page By Author Email: ");
+        return books;
     }
 
-    @DeleteMapping(path = {"/delete-book-by-id"}, params = {"id"})
+    @DeleteMapping(path = {"/by-id"}, params = {"id"})
     public ResponseEntity<StandardResponse> deleteBookById(@RequestParam(value = "id") String id) {
         String delete = bookService.deleteBookById(id);
         log.info("Book deleted: ");
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "delete Books of author", delete), HttpStatus.OK);
     }
 
-    @GetMapping(path = {"/book-by-id"}, params = {"id"})
+    @GetMapping(path = {"/by-id"}, params = {"id"})
     public ResponseEntity<StandardResponse> getBookById(@RequestParam(value = "id") String id) {
         Book book = bookService.getBookById(id);
         log.info("Book retrieved: ");
@@ -65,19 +67,13 @@ public class BookController {
     }
 
     @GetMapping(path = {"/all-books"}, params = {"page"})
-    public Page<Book> getAllBooks(@RequestParam(value = "page") int page) {
-        Page<Book> books = bookService.getAllBokks(page);
-        List<String> bookList = new ArrayList<>();
-        log.info("Book List Retrieved: ");
-        for (Book book : books.stream().toList()) {
-            bookList.add(book.getBookTitle());
-        }
+    public Page<RequestAllBookByCategory> getAllBooks(@RequestParam(value = "page") int page) {
+        Page<RequestAllBookByCategory> books = bookService.getAllBooks(page);
         return books;
     }
 
-    @GetMapping(path = {"/isbn-search"}, params = {"isbn", "page"})
+    @GetMapping(path = {"/search-isbn"}, params = {"isbn", "page"})
     public Page<Book> getBookByISbnSearching(@RequestParam(value = "isbn") String isbn, @RequestParam(value = "page") int page) {
-
         Page<Book> books = bookService.getBookBySearching(isbn, page);
         log.info("Book Search Retrieved: ");
         return books;

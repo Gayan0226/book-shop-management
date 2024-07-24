@@ -2,6 +2,8 @@ package com.bookshop.book_shop_management.service;
 
 import com.bookshop.book_shop_management.dto.request.RequestSaveBookDTO;
 import com.bookshop.book_shop_management.dto.request.RequestUpdateBookDetailsDto;
+import com.bookshop.book_shop_management.dto.responce.RequestAllBookByCategory;
+import com.bookshop.book_shop_management.dto.responce.ResponseBookSearchByAuthorEmail;
 import com.bookshop.book_shop_management.entity.Book;
 import org.springframework.data.domain.Page;
 
@@ -12,13 +14,13 @@ public interface BookService {
 
     String updateBookByBookId(String bookId, RequestUpdateBookDetailsDto requestUpdateBook);
 
-    Page<Book> getBooksByAuthorName(String category, int page);
-
     String deleteBookById(String id);
 
     Book getBookById(String id);
 
-    Page<Book> getAllBokks(int page);
+    Page<RequestAllBookByCategory> getAllBooks(int page);
 
     Page<Book> getBookBySearching(String isbn, int page);
+
+    Page<ResponseBookSearchByAuthorEmail> getBooksByAuthorName(String email, int page);
 }

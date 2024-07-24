@@ -2,6 +2,8 @@ package com.bookshop.book_shop_management.service.impl;
 
 import com.bookshop.book_shop_management.dto.request.RequestSaveBookDTO;
 import com.bookshop.book_shop_management.dto.request.RequestUpdateBookDetailsDto;
+import com.bookshop.book_shop_management.dto.responce.RequestAllBookByCategory;
+import com.bookshop.book_shop_management.dto.responce.ResponseBookSearchByAuthorEmail;
 import com.bookshop.book_shop_management.entity.Author;
 import com.bookshop.book_shop_management.entity.Book;
 import com.bookshop.book_shop_management.entity.enums.BookCateGoryType;
@@ -62,18 +64,8 @@ public class BookServiceIMPL implements BookService {
             bookRepo.updateBookDetails(requestUpdateBook.getBookTitle(), requestUpdateBook.getCategory(), bookId);
             return bookId;
         }
-        return null;
-    }
-
-    // TODO:
-    @Override
-    public Page<Book> getBooksByAuthorName(String category, int page) {
-        Pageable pageable = PageRequest.of(page, 10);
-        Optional<Book> books = bookRepo.findFirstByCategoryEquals(category);
-        if (books.isPresent()) {
-            return bookRepo.findAllByCategoryEquals(category, pageable);
-        } else {
-            throw new NotFoundBookCategoryException("There is no book category searching  you");
+        else{
+            throw new NotFoundBookException("Book not found");
         }
     }
 
@@ -99,9 +91,9 @@ public class BookServiceIMPL implements BookService {
     }
 
     @Override
-    public Page<Book> getAllBokks(int page) {
+    public Page<RequestAllBookByCategory> getAllBooks(int page) {
         Pageable pageable = PageRequest.of(page, 10);
-        Page<Book> books = bookRepo.findAll(pageable);
+        Page<RequestAllBookByCategory> books = bookRepo.findx(pageable);
         if (books.getSize() > 0 && page < books.getTotalPages()) {
             return books;
         } else if (page > books.getTotalPages()) {
@@ -122,5 +114,12 @@ public class BookServiceIMPL implements BookService {
         } else {
             throw new NotISBNException("Invalid ISBN");
         }
+    }
+
+    @Override
+    public Page<ResponseBookSearchByAuthorEmail> getBooksByAuthorName(String email, int page) {
+        Pageable pageable = PageRequest.of(page, 10);
+        Page<ResponseBookSearchByAuthorEmail> books = bookRepo.findSearchBookByEmail(email,pageable);
+        return books;
     }
 }
