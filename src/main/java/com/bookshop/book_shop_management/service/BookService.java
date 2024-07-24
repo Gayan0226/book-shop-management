@@ -22,5 +22,5 @@ public interface BookService {
 
     Page<Book> getBookBySearching(String isbn, int page);
 
-    Page<ResponseBookSearchByAuthorEmail> getBooksByAuthorName(String email, int page);
+    Page<ResponseBookSearchByAuthorEmail> getBooksByAuthorEmail(String email, int page);
 }

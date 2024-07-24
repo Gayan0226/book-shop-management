@@ -102,8 +102,13 @@ public class ReactServiceIMPL implements ReactService {
     @Override
     public Page<ResponseOrderBookByReact> getOrderBookByReact(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<ResponseOrderBookByReact> reacts = reactRepo.findAllBookByReactOrder(pageable);
-        return reacts;
+        Page<ResponseOrderBookByReact> reactOrder = reactRepo.findAllBookByReactOrder(pageable);
+        if(!reactOrder.isEmpty()){
+            return reactOrder;
+        }
+        else{
+            throw new NotFoundException("Not Found Any Reaction ");
+        }
     }
 
     @Override
@@ -111,7 +116,7 @@ public class ReactServiceIMPL implements ReactService {
 
         List<ResponseToEmail> page = reactRepo.getEmailToSendMail();
 
-        if (page.size() > 0) {
+        if (!page.isEmpty()) {
             Set<String> emailSet = new HashSet<>();
             List<ResponseToEmail> uniqueEmails = new ArrayList<>();
 

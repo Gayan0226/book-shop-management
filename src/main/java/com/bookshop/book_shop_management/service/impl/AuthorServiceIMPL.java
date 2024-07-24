@@ -4,7 +4,6 @@ import com.bookshop.book_shop_management.dto.request.RequestAuthorNameContactsUp
 import com.bookshop.book_shop_management.dto.request.RequestUpdateAuthorDTO;
 import com.bookshop.book_shop_management.dto.request.SaveAuthorDTO;
 import com.bookshop.book_shop_management.entity.Author;
-import com.bookshop.book_shop_management.exception.*;
 import com.bookshop.book_shop_management.exceptions.DuplicateValueException;
 import com.bookshop.book_shop_management.exceptions.NotFoundException;
 import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
@@ -13,7 +12,6 @@ import com.bookshop.book_shop_management.util.mapper.AuthorMapper;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -52,7 +50,7 @@ public class AuthorServiceIMPL implements AuthorService {
             authorREPO.updateNameContactsById(authorUpdateDTO.getFirstName(), authorUpdateDTO.getEmail(), id);
             return authorUpdateDTO.getFirstName();
         }
-        throw new NotFoundException("Not Found Author for " + id);
+        throw new NotFoundException("Not Found Author for ");
     }
 
     @Override

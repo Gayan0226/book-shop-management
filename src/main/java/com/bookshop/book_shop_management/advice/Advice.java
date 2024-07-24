@@ -1,9 +1,11 @@
-package com.bookshop.book_shop_management.exception;
+package com.bookshop.book_shop_management.advice;
 
 import com.bookshop.book_shop_management.exceptions.DuplicateValueException;
+import com.bookshop.book_shop_management.exceptions.NotFoundException;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.scheduling.support.TaskUtils;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -14,7 +16,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestControllerAdvice
-public class AuthorValidationException {
+public class Advice {
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(NotFoundException.class)
+    public Map<String, Object> handleNotFoundException(NotFoundException e) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", e.getMessage());
+        return response;
+    }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(DuplicateValueException.class)
     public Map<String, Object> handleDuplicateValueAddException(DuplicateValueException e) {
         Map<String, Object> response = new HashMap<>();
@@ -58,4 +68,5 @@ public class AuthorValidationException {
         errorMap.put("message", ex.getLocalizedMessage());
         return errorMap;
     }
+
 }

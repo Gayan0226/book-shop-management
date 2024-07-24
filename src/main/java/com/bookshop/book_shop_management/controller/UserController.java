@@ -1,7 +1,7 @@
 package com.bookshop.book_shop_management.controller;
 
 import com.bookshop.book_shop_management.dto.request.RequestUserSaveDTO;
-import com.bookshop.book_shop_management.exception.AuthorValidationException;
+import com.bookshop.book_shop_management.advice.Advice;
 import com.bookshop.book_shop_management.service.UserService;
 import com.bookshop.book_shop_management.util.StandardResponse;
 import org.slf4j.Logger;
@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
-    private AuthorValidationException authorValidationException;
+    private Advice advice;
 
     @PostMapping("/user-registered")
     public ResponseEntity<StandardResponse> userRegister(@RequestBody RequestUserSaveDTO user) {

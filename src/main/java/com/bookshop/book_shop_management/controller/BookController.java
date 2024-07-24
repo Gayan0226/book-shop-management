@@ -5,7 +5,7 @@ import com.bookshop.book_shop_management.dto.request.RequestUpdateBookDetailsDto
 import com.bookshop.book_shop_management.dto.responce.RequestAllBookByCategory;
 import com.bookshop.book_shop_management.dto.responce.ResponseBookSearchByAuthorEmail;
 import com.bookshop.book_shop_management.entity.Book;
-import com.bookshop.book_shop_management.exception.AuthorValidationException;
+import com.bookshop.book_shop_management.advice.Advice;
 import com.bookshop.book_shop_management.service.BookService;
 import com.bookshop.book_shop_management.util.StandardResponse;
 import jakarta.validation.Valid;
@@ -18,9 +18,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Validated
 @RestController
 @RequestMapping("api/v1/book")
@@ -29,7 +26,7 @@ import java.util.List;
 public class BookController {
     private static final Logger log = LoggerFactory.getLogger(BookController.class);
     private final BookService bookService;
-    private final AuthorValidationException authorValidationException;
+    private final Advice advice;
 
     @PostMapping(path = {"/add-book"}, params = {"authorId"})
     public ResponseEntity<StandardResponse> saveBookDetails(@Valid @RequestBody RequestSaveBookDTO requestSaveBookDTOok, @RequestParam(value = "authorId") int authorId) {
@@ -47,7 +44,7 @@ public class BookController {
 
     @GetMapping(path = {"/book-author-email"}, params = {"email"})
     public Page<ResponseBookSearchByAuthorEmail>  getBookByAuthorEmail(@RequestParam(value = "email") String email, @RequestParam(value = "page") int page) {
-        Page<ResponseBookSearchByAuthorEmail> books = bookService.getBooksByAuthorName(email, page);
+        Page<ResponseBookSearchByAuthorEmail> books = bookService.getBooksByAuthorEmail(email, page);
         log.info("Book get Like Page By Author Email: ");
         return books;
     }

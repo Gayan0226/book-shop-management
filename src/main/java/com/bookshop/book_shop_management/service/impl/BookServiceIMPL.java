@@ -7,7 +7,6 @@ import com.bookshop.book_shop_management.dto.responce.ResponseBookSearchByAuthor
 import com.bookshop.book_shop_management.entity.Author;
 import com.bookshop.book_shop_management.entity.Book;
 import com.bookshop.book_shop_management.entity.enums.BookCateGoryType;
-import com.bookshop.book_shop_management.exception.*;
 import com.bookshop.book_shop_management.exceptions.DuplicateValueException;
 import com.bookshop.book_shop_management.exceptions.NotFoundException;
 import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
@@ -15,14 +14,11 @@ import com.bookshop.book_shop_management.reporsitory.BookREPO;
 import com.bookshop.book_shop_management.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -118,9 +114,14 @@ public class BookServiceIMPL implements BookService {
     }
 
     @Override
-    public Page<ResponseBookSearchByAuthorEmail> getBooksByAuthorName(String email, int page) {
+    public Page<ResponseBookSearchByAuthorEmail> getBooksByAuthorEmail(String email, int page) {
         Pageable pageable = PageRequest.of(page, 10);
         Page<ResponseBookSearchByAuthorEmail> books = bookRepo.findSearchBookByEmail(email, pageable);
-        return books;
+       if(!books.isEmpty()){
+           return books;
+       }
+       else{
+           throw new NotFoundException("There is no book found for email");
+       }
     }
 }
