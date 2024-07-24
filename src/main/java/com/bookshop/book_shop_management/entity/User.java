@@ -4,9 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.extern.apachecommons.CommonsLog;
 
 import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -20,7 +20,7 @@ public class User {
     private String userName;
     @Column(name = "password", nullable = false, length = 50)
     private String password;
-    @Column(name="user_contact")
+    @Column(name = "user_contact")
     private String userContact;
     @OneToMany(mappedBy = "userId")
     private Set<React> react;

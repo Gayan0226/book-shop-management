@@ -5,6 +5,8 @@ import com.bookshop.book_shop_management.dto.request.RequestUpdateAuthorDTO;
 import com.bookshop.book_shop_management.dto.request.SaveAuthorDTO;
 import com.bookshop.book_shop_management.entity.Author;
 import com.bookshop.book_shop_management.exception.*;
+import com.bookshop.book_shop_management.exceptions.DuplicateValueException;
+import com.bookshop.book_shop_management.exceptions.NotFoundException;
 import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
 import com.bookshop.book_shop_management.service.AuthorService;
 import com.bookshop.book_shop_management.util.mapper.AuthorMapper;
@@ -30,21 +32,18 @@ public class AuthorServiceIMPL implements AuthorService {
     @Override
     public String saveAuthorDetails(SaveAuthorDTO saveAuthorDTO) {
         Author author = authorMapper.dtoToEntity(saveAuthorDTO);
-       List< Author> allAuthor =authorREPO.findAll();
-
-            boolean emailHave=false;
-            for (Author a : allAuthor) {
-                emailHave= author.getEmail().equals(a.getEmail());
-                System.out.println(emailHave);
-            }
-            if(!emailHave){
-                log.info("Come ");
-                return authorREPO.save(author).getFirstName();
-            }else{
-                throw new DuplicateValueAddException("Duplicated Author !");
-            }
-
-
+        List<Author> allAuthor = authorREPO.findAll();
+        boolean emailHave = false;
+        for (Author a : allAuthor) {
+            emailHave = author.getEmail().equals(a.getEmail());
+            System.out.println(emailHave);
+        }
+        if (!emailHave) {
+            log.info("Come ");
+            return authorREPO.save(author).getFirstName();
+        } else {
+            throw new DuplicateValueException("Duplicated Author !");
+        }
     }
 
     @Override
@@ -53,7 +52,7 @@ public class AuthorServiceIMPL implements AuthorService {
             authorREPO.updateNameContactsById(authorUpdateDTO.getFirstName(), authorUpdateDTO.getEmail(), id);
             return authorUpdateDTO.getFirstName();
         }
-        throw new AuthorNotFoundException("Not Found Author for " + id);
+        throw new NotFoundException("Not Found Author for " + id);
     }
 
     @Override
@@ -66,7 +65,7 @@ public class AuthorServiceIMPL implements AuthorService {
             referenceById.setEmail(updateAuthorDTO.getEmail());
             return authorREPO.save(referenceById).getFirstName();
         } else {
-            throw new AuthorNotFoundException("Author not found for " + updateAuthorDTO.getAuthorId());
+            throw new NotFoundException("Author not found for " + updateAuthorDTO.getAuthorId());
         }
     }
 
@@ -76,7 +75,7 @@ public class AuthorServiceIMPL implements AuthorService {
             authorREPO.deleteById(id);
             return true;
         } else {
-            throw new AuthorNotFoundException("Not Found Author for " + id);
+            throw new NotFoundException("Not Found Author for " + id);
         }
     }
 
@@ -86,7 +85,7 @@ public class AuthorServiceIMPL implements AuthorService {
         if (author.isPresent()) {
             return authorREPO.findById(id).get();
         } else {
-            throw new AuthorNotFoundException("Not Found Author for " + id);
+            throw new NotFoundException("Not Found Author for " + id);
         }
     }
 
@@ -97,9 +96,9 @@ public class AuthorServiceIMPL implements AuthorService {
         if (authors.getTotalElements() > 0 && page <= authors.getTotalPages()) {
             return authors.getContent();
         } else if (authors.getTotalPages() <= page) {
-            throw new PageIsOverException("Page number are is Not valid for Now");
+            throw new NotFoundException("Page number are is Not valid for Now");
         } else {
-            throw new EmptyAuthorsException("There Is no Authors ");
+            throw new NotFoundException("There Is no Authors ");
         }
     }
 }

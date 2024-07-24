@@ -8,6 +8,8 @@ import com.bookshop.book_shop_management.entity.Author;
 import com.bookshop.book_shop_management.entity.Book;
 import com.bookshop.book_shop_management.entity.enums.BookCateGoryType;
 import com.bookshop.book_shop_management.exception.*;
+import com.bookshop.book_shop_management.exceptions.DuplicateValueException;
+import com.bookshop.book_shop_management.exceptions.NotFoundException;
 import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
 import com.bookshop.book_shop_management.reporsitory.BookREPO;
 import com.bookshop.book_shop_management.service.BookService;
@@ -47,13 +49,13 @@ public class BookServiceIMPL implements BookService {
                     bookRepo.save(book);
                     return author.get().getFirstName();
                 } catch (IllegalArgumentException e) {
-                    throw new NotFoundBookException("Category not found");
+                    throw new NotFoundException("Category not found");
                 }
             } else {
-                throw new DuplicateValueAddException("Books already exist");
+                throw new DuplicateValueException("Books already exist");
             }
         } else {
-            throw new AuthorNotFoundException("Author not Found");
+            throw new NotFoundException("Author not Found");
         }
     }
 
@@ -63,9 +65,8 @@ public class BookServiceIMPL implements BookService {
         if (book.isPresent()) {
             bookRepo.updateBookDetails(requestUpdateBook.getBookTitle(), requestUpdateBook.getCategory(), bookId);
             return bookId;
-        }
-        else{
-            throw new NotFoundBookException("Book not found");
+        } else {
+            throw new NotFoundException("Book not found");
         }
     }
 
@@ -76,7 +77,7 @@ public class BookServiceIMPL implements BookService {
             bookRepo.deleteById(id);
             return id;
         } else {
-            throw new NotFoundBookException("There is No book found");
+            throw new NotFoundException("There is No book found");
         }
     }
 
@@ -86,20 +87,20 @@ public class BookServiceIMPL implements BookService {
         if (book.isPresent()) {
             return book.get();
         } else {
-            throw new NotFoundBookException("There is No book found");
+            throw new NotFoundException("There is No book found");
         }
     }
 
     @Override
     public Page<RequestAllBookByCategory> getAllBooks(int page) {
         Pageable pageable = PageRequest.of(page, 10);
-        Page<RequestAllBookByCategory> books = bookRepo.findx(pageable);
+        Page<RequestAllBookByCategory> books = bookRepo.findAllBooks(pageable);
         if (books.getSize() > 0 && page < books.getTotalPages()) {
             return books;
         } else if (page > books.getTotalPages()) {
-            throw new PageIsOverException("There's no more pages");
+            throw new NotFoundException("There's no more pages");
         } else {
-            throw new NotFoundBookException("There is no book found");
+            throw new NotFoundException("There is no book found");
         }
     }
 
@@ -110,16 +111,16 @@ public class BookServiceIMPL implements BookService {
         if (bookSearch.getTotalElements() > 0 && page < bookSearch.getTotalPages()) {
             return bookSearch;
         } else if (page > bookSearch.getTotalPages()) {
-            throw new PageIsOverException("Page not available!");
+            throw new NotFoundException("Page not available!");
         } else {
-            throw new NotISBNException("Invalid ISBN");
+            throw new NotFoundException("Invalid ISBN");
         }
     }
 
     @Override
     public Page<ResponseBookSearchByAuthorEmail> getBooksByAuthorName(String email, int page) {
         Pageable pageable = PageRequest.of(page, 10);
-        Page<ResponseBookSearchByAuthorEmail> books = bookRepo.findSearchBookByEmail(email,pageable);
+        Page<ResponseBookSearchByAuthorEmail> books = bookRepo.findSearchBookByEmail(email, pageable);
         return books;
     }
 }
