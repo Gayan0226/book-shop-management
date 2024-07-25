@@ -12,6 +12,8 @@ import com.bookshop.book_shop_management.reporsitory.ReactRepo;
 import com.bookshop.book_shop_management.reporsitory.UserRepo;
 import com.bookshop.book_shop_management.service.ReactService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +25,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class ReactServiceIMPL implements ReactService {
 
+    private static final Logger log = LoggerFactory.getLogger(ReactServiceIMPL.class);
     private final ReactRepo reactRepo;
 
     private final UserRepo userRepo;
@@ -114,22 +117,23 @@ public class ReactServiceIMPL implements ReactService {
     @Override
     public List<ResponseToEmail> getEmailForSendMail() {
 
-        List<ResponseToEmail> page = reactRepo.getEmailToSendMail();
+        List<ResponseToEmail> reactRepoEmailToSendMail = reactRepo.getEmailToSendMail();
 
-        if (!page.isEmpty()) {
-            Set<String> emailSet = new HashSet<>();
-            List<ResponseToEmail> uniqueEmails = new ArrayList<>();
+        if (!reactRepoEmailToSendMail.isEmpty()) {
+//            Set<String> emailSet = new HashSet<>();
+//            List<ResponseToEmail> uniqueEmails = new ArrayList<>();
+//
+//            for (ResponseToEmail response : reactRepoEmailToSendMail) {
+//                if (emailSet.add(response.getEmailAuthor())) {
+//                    uniqueEmails.add(response);
+//                }
+//            }
 
-            for (ResponseToEmail response : page) {
-                if (emailSet.add(response.getEmailAuthor())) {
-                    uniqueEmails.add(response);
-                }
-            }
-
-            return uniqueEmails;
+            return reactRepoEmailToSendMail;
 
         } else {
-            throw new NotFoundException("There is Not any email address");
+            log.info("React Table Empty!");
+            throw new NotFoundException("There Is Not Valid Email");
         }
     }
 }
