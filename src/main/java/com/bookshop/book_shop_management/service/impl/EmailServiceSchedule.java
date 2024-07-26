@@ -25,7 +25,7 @@ public class EmailServiceSchedule {
 
     private static final Logger log = LoggerFactory.getLogger(EmailServiceSchedule.class);
 
-    @Scheduled(fixedRate = 3000)
+    @Scheduled(fixedRate = 20000)
     public void sendMail() {
         try {
             log.info("Run Method email");

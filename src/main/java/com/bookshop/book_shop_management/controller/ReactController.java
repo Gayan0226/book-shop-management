@@ -4,6 +4,7 @@ import com.bookshop.book_shop_management.dto.request.RequestUserToReactBookDTO;
 import com.bookshop.book_shop_management.dto.responce.ResponseOrderBookByReact;
 import com.bookshop.book_shop_management.service.ReactService;
 import com.bookshop.book_shop_management.util.StandardResponse;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -32,7 +33,7 @@ public class ReactController {
     )
     public ResponseEntity<StandardResponse> reactToBook(
             @RequestParam(value = "userId", defaultValue = "like") int userId,
-            @RequestBody RequestUserToReactBookDTO reacts) {
+            @RequestBody @Valid RequestUserToReactBookDTO reacts) {
         String reactBooks = reactService.setReactOneBook(reacts, userId);
         log.info("React to book Successful ");
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "React successful", reactBooks), HttpStatus.OK);

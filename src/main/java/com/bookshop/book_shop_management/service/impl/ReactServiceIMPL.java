@@ -98,15 +98,6 @@ public class ReactServiceIMPL implements ReactService {
         List<ResponseToEmail> reactRepoEmailToSendMail = reactRepo.getEmailToSendMail();
 
         if (!reactRepoEmailToSendMail.isEmpty()) {
-//            Set<String> emailSet = new HashSet<>();
-//            List<ResponseToEmail> uniqueEmails = new ArrayList<>();
-//
-//            for (ResponseToEmail response : reactRepoEmailToSendMail) {
-//                if (emailSet.add(response.getEmailAuthor())) {
-//                    uniqueEmails.add(response);
-//                }
-//            }
-
             return reactRepoEmailToSendMail;
 
         } else {
