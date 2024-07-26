@@ -5,6 +5,7 @@ import com.bookshop.book_shop_management.dto.responce.ResponseOrderBookByReact;
 import com.bookshop.book_shop_management.service.ReactService;
 import com.bookshop.book_shop_management.util.StandardResponse;
 import jakarta.validation.constraints.Max;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,24 +19,12 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/react-controller")
 @CrossOrigin
-
+@RequiredArgsConstructor
 public class ReactController {
 
-    @Autowired
-    private ReactService reactService;
-    private static final Logger log = LoggerFactory.getLogger(ReactController.class);
 
-    @PostMapping(
-            path = {"/react-to-all-book"},
-            params = {"userId"}
-    )
-    public ResponseEntity<StandardResponse> reactToAllBook(
-            @RequestParam(value = "userId") int userId,
-            @RequestBody List<RequestUserToReactBookDTO> reacts) {
-        String reactBooks = reactService.setReactBook(reacts, userId);
-        log.info("React to books Successful ");
-        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "React successful", reactBooks), HttpStatus.OK);
-    }
+    private final ReactService reactService;
+    private static final Logger log = LoggerFactory.getLogger(ReactController.class);
 
     @PostMapping(
             path = {"/react-to-book"},

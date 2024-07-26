@@ -8,7 +8,6 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 public interface ReactService {
-    String setReactBook(List<RequestUserToReactBookDTO> reacts, int userId);
 
     String setReactOneBook(RequestUserToReactBookDTO reacts, int userId);
 

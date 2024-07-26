@@ -1,6 +1,5 @@
 package com.bookshop.book_shop_management.service.impl;
 
-import com.bookshop.book_shop_management.dto.request.RequestAuthorNameContactsUpdateDTO;
 import com.bookshop.book_shop_management.dto.request.RequestUpdateAuthorDTO;
 import com.bookshop.book_shop_management.dto.request.SaveAuthorDTO;
 import com.bookshop.book_shop_management.entity.Author;
@@ -44,14 +43,7 @@ public class AuthorServiceIMPL implements AuthorService {
         }
     }
 
-    @Override
-    public String updateNameContactEmailAuthorById(int id, RequestAuthorNameContactsUpdateDTO authorUpdateDTO) {
-        if (authorREPO.existsById(id)) {
-            authorREPO.updateNameContactsById(authorUpdateDTO.getFirstName(), authorUpdateDTO.getEmail(), id);
-            return authorUpdateDTO.getFirstName();
-        }
-        throw new NotFoundException("Not Found Author for ");
-    }
+
 
     @Override
     public String updateAuthor(RequestUpdateAuthorDTO updateAuthorDTO) {

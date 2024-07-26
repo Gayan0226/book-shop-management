@@ -44,16 +44,20 @@ public class EmailServiceSchedule {
                 String emailAuthor = entry.getKey();
                 List<BookDetailsForEmail> books = entry.getValue();
                 String subjectEmail = "Inform Your Books React Count !\n";
-                String bodyEmail = "Dear Author,\nHere are the react counts for your books:\n";
+                String bodyEmail = "";
+                /*Dear Author,
+Here are the react counts for your books:
+
+                */
                 for (BookDetailsForEmail book : books) {
-                    bodyEmail += String.format("\nBookID: %s\n,\nBook Name: %s\t,React Count: %d\n",
-                            book.getBookId(), book.getBookName(), book.getReactCount());
+//                    bodyEmail += String.format("\nBookID: %s\n,\nBook Name: %s\t,React Count: %d\n",
+//                            book.getBookId(), book.getBookName(), book.getReactCount());
+                    bodyEmail += "Book ID : " + book.getBookId() + "\tReact: " + book.getReactCount() + "\n";
+
                 }
-                log.info("Email Subject: {} Body {} ", subjectEmail,bodyEmail);
-                emailService.sendMail(emailAuthor, subjectEmail, bodyEmail);
+                log.info("email :{} body : {} ", emailAuthor, bodyEmail);
+//                emailService.sendMail(emailAuthor, subjectEmail, bodyEmail);
             }
-
-
 
 
         } catch (

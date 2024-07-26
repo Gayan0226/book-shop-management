@@ -33,28 +33,6 @@ public class ReactServiceIMPL implements ReactService {
     private final BookREPO bookRepo;
 
     @Override
-    public String setReactBook(List<RequestUserToReactBookDTO> reacts, int userId) {
-        Optional<User> user = userRepo.findById(userId);
-        List<React> reactsAll = new ArrayList<>();
-        if (user.isPresent()) {
-            for (RequestUserToReactBookDTO r : reacts) {
-                Book book = bookRepo.getReferenceById(r.getBookReact());
-                String bookIdAvailable = book.getIsbnId();
-                if (Objects.equals(r.getBookReact(), bookIdAvailable)) {
-                    React newReact = new React(user.get(), book, r.isReact());
-                    reactsAll.add(newReact);
-                } else {
-                    throw new NotFoundException("Books Id Invalid !");
-                }
-            }
-            reactRepo.saveAll(reactsAll);
-            return "React Successfully Added !";
-        } else {
-            throw new NotFoundException("User not found");
-        }
-    }
-
-    @Override
     public String setReactOneBook(RequestUserToReactBookDTO reacts, int userId) {
         Optional<User> user = userRepo.findById(userId);
         if (user.isPresent()) {

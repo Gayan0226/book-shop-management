@@ -1,13 +1,12 @@
 package com.bookshop.book_shop_management.controller;
 
-import com.bookshop.book_shop_management.dto.request.RequestAuthorNameContactsUpdateDTO;
 import com.bookshop.book_shop_management.dto.request.RequestUpdateAuthorDTO;
 import com.bookshop.book_shop_management.dto.request.SaveAuthorDTO;
 import com.bookshop.book_shop_management.entity.Author;
 import com.bookshop.book_shop_management.service.AuthorService;
 import com.bookshop.book_shop_management.util.StandardResponse;
 import jakarta.validation.Valid;
-import org.hibernate.query.Page;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +20,13 @@ import java.util.stream.Collectors;
 
 @Validated
 @RestController
-// TODO: REMOVE CONTROLLER
 @RequestMapping("api/v1/author")
 @CrossOrigin
+@RequiredArgsConstructor
 public class AuthorController {
     private static final Logger log = LoggerFactory.getLogger(AuthorController.class);
-    @Autowired
-    private AuthorService authorService;
+
+    private final AuthorService authorService;
 
     @PostMapping()
     public ResponseEntity<StandardResponse> saveAuthor(@RequestBody @Valid SaveAuthorDTO saveAuthorDTO) {
@@ -37,17 +36,10 @@ public class AuthorController {
     }
 
     @PutMapping(path = {"/author-update-by-id"})
-    public ResponseEntity<StandardResponse> updateAuthor(@RequestBody RequestUpdateAuthorDTO updateAuthorDTO) {
+    public ResponseEntity<StandardResponse> updateAuthor(@RequestBody @Valid RequestUpdateAuthorDTO updateAuthorDTO) {
         String update = authorService.updateAuthor(updateAuthorDTO);
         log.info("Author updated by Id: ");
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "Updated", update), HttpStatus.NO_CONTENT);
-    }
-
-    @PutMapping(path = {"/author-name-contacts-update"}, params = {"id"})
-    public ResponseEntity<StandardResponse> updateAuthorById(@RequestParam(value = "id") int id, @RequestBody RequestAuthorNameContactsUpdateDTO authorUpdateDTO) {
-        String update = authorService.updateNameContactEmailAuthorById(id, authorUpdateDTO);
-        log.info("Author contact name Updated by Id: ");
-        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "Updated", update), HttpStatus.OK);
     }
 
     @DeleteMapping(path = {"/delete-author-by-id"}, params = {"id"})
