@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("api/v1/user-controller")
 @CrossOrigin
-@RequiredArgsConstructor(onConstructor_ = {@Autowired})
+@RequiredArgsConstructor()
 public class UserController {
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
     private final UserService userService;

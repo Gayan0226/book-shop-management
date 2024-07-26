@@ -25,7 +25,7 @@ public class EmailServiceSchedule {
 
     private static final Logger log = LoggerFactory.getLogger(EmailServiceSchedule.class);
 
-    @Scheduled(fixedRate = 30000)
+    @Scheduled(fixedRate = 3000)
     public void sendMail() {
         try {
             log.info("Run Method email");
@@ -44,22 +44,14 @@ public class EmailServiceSchedule {
                 String emailAuthor = entry.getKey();
                 List<BookDetailsForEmail> books = entry.getValue();
                 String subjectEmail = "Inform Your Books React Count !\n";
-                String bodyEmail = "";
-                /*Dear Author,
-Here are the react counts for your books:
-
-                */
+                String bodyEmail = "Dear Author\n Here Are The React Counts For Your Books \n\n";
                 for (BookDetailsForEmail book : books) {
-//                    bodyEmail += String.format("\nBookID: %s\n,\nBook Name: %s\t,React Count: %d\n",
-//                            book.getBookId(), book.getBookName(), book.getReactCount());
-                    bodyEmail += "Book ID : " + book.getBookId() + "\tReact: " + book.getReactCount() + "\n";
-
+                    bodyEmail += "\tBook ID : " + book.getBookId() + "\tReact: " + book.getReactCount() + "\n";
                 }
-                log.info("email :{} body : {} ", emailAuthor, bodyEmail);
+                log.info("\nemail :{} \nbody :\n {} ", emailAuthor, bodyEmail);
+//               TODO Remove Comment For send email To Author
 //                emailService.sendMail(emailAuthor, subjectEmail, bodyEmail);
             }
-
-
         } catch (
                 Exception e) {
             log.error(e.getMessage());
