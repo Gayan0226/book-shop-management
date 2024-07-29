@@ -33,17 +33,15 @@ public class AuthorServiceIMPL implements AuthorService {
         boolean emailHave = false;
         for (Author a : allAuthor) {
             emailHave = author.getEmail().equals(a.getEmail());
-            System.out.println(emailHave);
         }
         if (!emailHave) {
-            log.info("Come ");
+            log.info("New Author Identify by using Email");
             return authorREPO.save(author).getFirstName();
         } else {
+
             throw new DuplicateValueException("Duplicated Author !");
         }
     }
-
-
 
     @Override
     public String updateAuthor(RequestUpdateAuthorDTO updateAuthorDTO) {
@@ -53,6 +51,7 @@ public class AuthorServiceIMPL implements AuthorService {
             referenceById.setLastName(updateAuthorDTO.getLastName());
             referenceById.setContact(updateAuthorDTO.getContact());
             referenceById.setEmail(updateAuthorDTO.getEmail());
+            log.info("Update Author");
             return authorREPO.save(referenceById).getFirstName();
         } else {
             throw new NotFoundException("Author not found for " + updateAuthorDTO.getAuthorId());
@@ -62,6 +61,7 @@ public class AuthorServiceIMPL implements AuthorService {
     @Override
     public boolean authorDeletedByID(int id) {
         if (authorREPO.existsById(id)) {
+            log.info("Delete Author !");
             authorREPO.deleteById(id);
             return true;
         } else {
@@ -73,6 +73,7 @@ public class AuthorServiceIMPL implements AuthorService {
     public Author getAuthorById(int id) {
         Optional<Author> author = authorREPO.findById(id);
         if (author.isPresent()) {
+            log.info("Get Author !");
             return authorREPO.findById(id).get();
         } else {
             throw new NotFoundException("Not Found Author for " + id);
@@ -84,6 +85,7 @@ public class AuthorServiceIMPL implements AuthorService {
         Pageable pageable = PageRequest.of(page, 10);
         Page<Author> authors = authorREPO.findAll(pageable);
         if (authors.getTotalElements() > 0 && page <= authors.getTotalPages()) {
+            log.info("Get All Authors !");
             return authors.getContent();
         } else if (authors.getTotalPages() <= page) {
             throw new NotFoundException("Page number are is Not valid for Now");

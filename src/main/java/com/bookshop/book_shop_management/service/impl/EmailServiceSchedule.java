@@ -28,7 +28,6 @@ public class EmailServiceSchedule {
     @Scheduled(fixedRate = 20000)
     public void sendMail() {
         try {
-            log.info("Run Method email");
             List<ResponseToEmail> reacts = reactService.getEmailForSendMail();
             Map<String, List<BookDetailsForEmail>> map = new HashMap<>();
             for (ResponseToEmail r : reacts) {
@@ -48,7 +47,9 @@ public class EmailServiceSchedule {
                 for (BookDetailsForEmail book : books) {
                     bodyEmail += "\tBook ID : " + book.getBookId() + "\tReact: " + book.getReactCount() + "\n";
                 }
+
                 log.info("\nemail :{} \nbody :\n {} ", emailAuthor, bodyEmail);
+                log.info("Ready to send email");
 //               TODO Remove Comment For send email To Author
 //                emailService.sendMail(emailAuthor, subjectEmail, bodyEmail);
             }

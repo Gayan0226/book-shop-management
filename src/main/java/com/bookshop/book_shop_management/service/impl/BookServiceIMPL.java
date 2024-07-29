@@ -14,6 +14,8 @@ import com.bookshop.book_shop_management.reporsitory.BookREPO;
 import com.bookshop.book_shop_management.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +27,7 @@ import java.util.Optional;
 @Service
 public class BookServiceIMPL implements BookService {
 
+    private static final Logger log = LoggerFactory.getLogger(BookServiceIMPL.class);
     private final ModelMapper modelMapper;
 
     private final AuthorREPO authorRepo;
@@ -43,6 +46,7 @@ public class BookServiceIMPL implements BookService {
                     book.setAuthor(author.get());
                     book.setCategory(categoryType);
                     bookRepo.save(book);
+                    log.info("Book saved ");
                     return author.get().getFirstName();
                 } catch (IllegalArgumentException e) {
                     throw new NotFoundException("Category not found");
@@ -65,6 +69,7 @@ public class BookServiceIMPL implements BookService {
                 optionalBook.setCategory(categoryType);
                 optionalBook.setBookTitle(requestUpdateBook.getBookTitle());
                 bookRepo.save(optionalBook);
+                log.info("Book updated ");
                 return bookId;
             } catch (IllegalArgumentException e) {
                 throw new NotFoundException("Category not found");
@@ -80,6 +85,7 @@ public class BookServiceIMPL implements BookService {
         Optional<Book> book = bookRepo.findById(id);
         if (book.isPresent()) {
             bookRepo.deleteById(id);
+            log.info("Book deleted ");
             return id;
         } else {
             throw new NotFoundException("There is No book found");
@@ -90,6 +96,7 @@ public class BookServiceIMPL implements BookService {
     public Book getBookById(String id) {
         Optional<Book> book = bookRepo.findById(id);
         if (book.isPresent()) {
+            log.info("Book found ");
             return book.get();
         } else {
             throw new NotFoundException("There is No book found");
@@ -101,6 +108,7 @@ public class BookServiceIMPL implements BookService {
         Pageable pageable = PageRequest.of(page, 10);
         Page<RequestAllBookByCategory> books = bookRepo.findAllBooks(pageable);
         if (books.getSize() > 0 && page < books.getTotalPages()) {
+            log.info("Books found return page ! ");
             return books;
         } else if (page > books.getTotalPages()) {
             throw new NotFoundException("There's no more pages");
@@ -114,6 +122,7 @@ public class BookServiceIMPL implements BookService {
         Pageable pageable = PageRequest.of(page, 10);
         Page<Book> bookSearch = bookRepo.findAllSearch(isbn, pageable);
         if (bookSearch.getTotalElements() > 0 && page < bookSearch.getTotalPages()) {
+            log.info("Books Search by ISBN return page ! ");
             return bookSearch;
         } else if (page > bookSearch.getTotalPages()) {
             throw new NotFoundException("Page not available!");
@@ -125,12 +134,12 @@ public class BookServiceIMPL implements BookService {
     @Override
     public Page<ResponseBookSearchByAuthorEmail> getBooksByAuthorEmail(String email, int page) {
         Pageable pageable = PageRequest.of(page, 10);
-        Page<ResponseBookSearchByAuthorEmail> books = bookRepo.findSearchBookByEmail(email, pageable);
-       if(!books.isEmpty()){
-           return books;
-       }
-       else{
-           throw new NotFoundException("There is no book found for email");
-       }
+        Page<ResponseBookSearchByAuthorEmail> books = bookRepo.findSearchBookByAuthorEmail(email, pageable);
+        if (!books.isEmpty()) {
+            log.info("Books found by Author Email return page ! ");
+            return books;
+        } else {
+            throw new NotFoundException("There is no book found for email");
+        }
     }
 }

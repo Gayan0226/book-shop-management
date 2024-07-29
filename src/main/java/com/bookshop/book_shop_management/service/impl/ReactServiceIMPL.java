@@ -40,6 +40,7 @@ public class ReactServiceIMPL implements ReactService {
             if (bookRepo.existsById(book.getIsbnId())) {
                 React react = new React(user.get(), book, reacts.isReact());
                 reactRepo.save(react);
+                log.info("React added");
                 return "React Successfully Added !";
             } else {
                 throw new NotFoundException("Books Id Invalid !");
@@ -54,6 +55,7 @@ public class ReactServiceIMPL implements ReactService {
     public int getReactLikeCount(String isbn) {
         Optional<Book> book = bookRepo.findById(isbn);
         if (book.isPresent()) {
+            log.info("Book Like Count");
             return reactRepo.getLikeCount(isbn);
         } else {
             throw new NotFoundException("There  not found Books this ID ");
@@ -64,6 +66,7 @@ public class ReactServiceIMPL implements ReactService {
     public int getReactDisLikeCount(String isbn) {
         Optional<Book> book = bookRepo.findById(isbn);
         if (book.isPresent()) {
+            log.info("Book DisLike Count");
             return reactRepo.getDisLikeCount(isbn);
         } else {
             throw new NotFoundException("There  not found Books this ID ");
@@ -79,6 +82,7 @@ public class ReactServiceIMPL implements ReactService {
             reactData.setReact(react);
             reactData.setReactId(reactId);
             reactRepo.save(reactData);
+            log.info("Book Update React");
             return reactId;
         } else {
             throw new NotFoundException("there is Not Previous Reaction");
@@ -90,6 +94,7 @@ public class ReactServiceIMPL implements ReactService {
         Pageable pageable = PageRequest.of(page, size);
         Page<ResponseOrderBookByReact> reactOrder = reactRepo.findAllBookByReactOrder(pageable);
         if (!reactOrder.isEmpty()) {
+            log.info("Get Books By React Order");
             return reactOrder;
         } else {
             throw new NotFoundException("Not Found Any Reaction ");
@@ -102,6 +107,7 @@ public class ReactServiceIMPL implements ReactService {
         List<ResponseToEmail> reactRepoEmailToSendMail = reactRepo.getEmailToSendMail();
 
         if (!reactRepoEmailToSendMail.isEmpty()) {
+            log.info("Get Email To Send Mail");
             return reactRepoEmailToSendMail;
 
         } else {

@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
     private static final Logger log = LoggerFactory.getLogger(BookController.class);
     private final BookService bookService;
-    private final Advice advice;
 
     @PostMapping(path = {"/add-book"}, params = {"authorId"})
     public ResponseEntity<StandardResponse> saveBookDetails(@Valid @RequestBody RequestSaveBookDTO requestSaveBookDTOok, @RequestParam(value = "authorId") int authorId) {

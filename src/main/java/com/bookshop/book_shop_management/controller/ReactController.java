@@ -23,7 +23,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReactController {
 
-
     private final ReactService reactService;
     private static final Logger log = LoggerFactory.getLogger(ReactController.class);
 

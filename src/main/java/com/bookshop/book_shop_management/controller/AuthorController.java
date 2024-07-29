@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AuthorController {
     private static final Logger log = LoggerFactory.getLogger(AuthorController.class);
-
     private final AuthorService authorService;
 
     @PostMapping()
