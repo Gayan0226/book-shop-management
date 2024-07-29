@@ -16,11 +16,11 @@ import java.util.ArrayList;
 public class RequestUpdateAuthorDTO {
     int authorId;
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "only contains simple and capital letters")
+    @Pattern(regexp = "^[a-zA-Z ]+$", message = "only contains simple and capital letters")
     @Schema(example = "contains simple and capital letters")
     String firstName;
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "only contains simple and capital letters")
+    @Pattern(regexp = "^[a-zA-Z ]+$", message = "only contains simple and capital letters")
     @Schema(example = "only contains simple and capital letters")
     String lastName;
     @Email

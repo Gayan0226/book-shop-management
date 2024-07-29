@@ -14,7 +14,7 @@ public class RequestUpdateBookDetailsDto {
     @NotEmpty
     String category;
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Title must contain only alphanumeric characters.")
+    @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Title must contain only alphanumeric characters.")
     @Schema(example = "Contain only alphanumeric characters")
     String bookTitle;
 

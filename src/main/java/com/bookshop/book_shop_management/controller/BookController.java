@@ -5,7 +5,6 @@ import com.bookshop.book_shop_management.dto.request.RequestUpdateBookDetailsDto
 import com.bookshop.book_shop_management.dto.responce.RequestAllBookByCategory;
 import com.bookshop.book_shop_management.dto.responce.ResponseBookSearchByAuthorEmail;
 import com.bookshop.book_shop_management.entity.Book;
-import com.bookshop.book_shop_management.advice.Advice;
 import com.bookshop.book_shop_management.service.BookService;
 import com.bookshop.book_shop_management.util.StandardResponse;
 import jakarta.validation.Valid;

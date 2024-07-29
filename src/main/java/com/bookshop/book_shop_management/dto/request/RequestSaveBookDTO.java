@@ -20,7 +20,7 @@ public class RequestSaveBookDTO {
     @NotEmpty
     String category;
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Title must contain only alphanumeric characters.")
+    @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Title must contain only alphanumeric characters and spaces.")
     @Schema(example = "contain only alphanumeric characters")
     String bookTitle;
 

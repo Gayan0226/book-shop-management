@@ -1,13 +1,12 @@
 package com.bookshop.book_shop_management.controller;
 
-import com.bookshop.book_shop_management.dto.request.RequestUserSaveDTO;
 import com.bookshop.book_shop_management.advice.Advice;
+import com.bookshop.book_shop_management.dto.request.RequestUserSaveDTO;
 import com.bookshop.book_shop_management.service.UserService;
 import com.bookshop.book_shop_management.util.StandardResponse;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
