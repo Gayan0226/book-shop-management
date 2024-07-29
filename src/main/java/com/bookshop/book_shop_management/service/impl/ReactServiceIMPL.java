@@ -73,8 +73,13 @@ public class ReactServiceIMPL implements ReactService {
     @Override
     public int updateReact(boolean react, String isbn, int reactId) {
         Optional<React> hasReact = reactRepo.findById(reactId);
-        if (hasReact.isPresent() && bookRepo.findById(isbn).isPresent()) {
-            return reactRepo.updateValue(react, isbn, reactId);
+        Optional<Book> book = bookRepo.findById(isbn);
+        if (hasReact.isPresent() && book.isPresent()) {
+            React reactData = hasReact.get();
+            reactData.setReact(react);
+            reactData.setReactId(reactId);
+            reactRepo.save(reactData);
+            return reactId;
         } else {
             throw new NotFoundException("there is Not Previous Reaction");
         }
@@ -84,10 +89,9 @@ public class ReactServiceIMPL implements ReactService {
     public Page<ResponseOrderBookByReact> getOrderBookByReact(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<ResponseOrderBookByReact> reactOrder = reactRepo.findAllBookByReactOrder(pageable);
-        if(!reactOrder.isEmpty()){
+        if (!reactOrder.isEmpty()) {
             return reactOrder;
-        }
-        else{
+        } else {
             throw new NotFoundException("Not Found Any Reaction ");
         }
     }

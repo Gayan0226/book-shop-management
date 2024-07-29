@@ -6,7 +6,7 @@ import com.bookshop.book_shop_management.dto.responce.RequestAllBookByCategory;
 import com.bookshop.book_shop_management.dto.responce.ResponseBookSearchByAuthorEmail;
 import com.bookshop.book_shop_management.entity.Author;
 import com.bookshop.book_shop_management.entity.Book;
-import com.bookshop.book_shop_management.entity.enums.BookCateGoryType;
+import com.bookshop.book_shop_management.entity.enums.BookCategoryType;
 import com.bookshop.book_shop_management.exceptions.DuplicateValueException;
 import com.bookshop.book_shop_management.exceptions.NotFoundException;
 import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
@@ -19,8 +19,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -41,7 +39,7 @@ public class BookServiceIMPL implements BookService {
             Optional<Book> bookHave = bookRepo.findById(requestSaveBookDTOok.getIsbnId());
             if (!bookHave.isPresent()) {
                 try {
-                    BookCateGoryType categoryType = BookCateGoryType.valueOf(requestSaveBookDTOok.getCategory().toUpperCase());
+                    BookCategoryType categoryType = BookCategoryType.valueOf(requestSaveBookDTOok.getCategory().toUpperCase());
                     book.setAuthor(author.get());
                     book.setCategory(categoryType);
                     bookRepo.save(book);
@@ -61,8 +59,17 @@ public class BookServiceIMPL implements BookService {
     public String updateBookByBookId(String bookId, RequestUpdateBookDetailsDto requestUpdateBook) {
         Optional<Book> book = bookRepo.findById(bookId);
         if (book.isPresent()) {
-            bookRepo.updateBookDetails(requestUpdateBook.getBookTitle(), requestUpdateBook.getCategory(), bookId);
-            return bookId;
+            try {
+                BookCategoryType categoryType = BookCategoryType.valueOf(requestUpdateBook.getCategory().toUpperCase());
+                Book optionalBook = book.get();
+                optionalBook.setCategory(categoryType);
+                optionalBook.setBookTitle(requestUpdateBook.getBookTitle());
+                bookRepo.save(optionalBook);
+                return bookId;
+            } catch (IllegalArgumentException e) {
+                throw new NotFoundException("Category not found");
+            }
+
         } else {
             throw new NotFoundException("Book not found");
         }

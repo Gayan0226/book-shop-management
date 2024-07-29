@@ -1,12 +1,9 @@
 package com.bookshop.book_shop_management.dto.responce;
 
-import com.bookshop.book_shop_management.entity.enums.BookCateGoryType;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import com.bookshop.book_shop_management.entity.enums.BookCategoryType;
 
 public interface ResponseBookSearchByAuthorEmail {
     String getIsbnId();
-    BookCateGoryType getCategory();
+    BookCategoryType getCategory();
     String getBookTitle();
 }

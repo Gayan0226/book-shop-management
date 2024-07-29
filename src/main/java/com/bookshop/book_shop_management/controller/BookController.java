@@ -37,9 +37,9 @@ public class BookController {
 
     @PutMapping(path = {"/book"}, params = {"bookId"})
     public ResponseEntity<StandardResponse> updateBookDetails(@RequestParam(value = "bookId") String bookId, @RequestBody @Valid RequestUpdateBookDetailsDto requestUpdateBook) {
-        String updated = bookService.updateBookByBookId(bookId, requestUpdateBook);
+        String bookIdUpdate = bookService.updateBookByBookId(bookId, requestUpdateBook);
         log.info("Book Updated: ");
-        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "saved Books of author", "saved"), HttpStatus.OK);
+        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "Update Books of author", bookIdUpdate), HttpStatus.OK);
     }
 
     @GetMapping(path = {"/book-author-email"}, params = {"email"})
