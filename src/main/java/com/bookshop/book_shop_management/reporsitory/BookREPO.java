@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-@EnableJpaRepositories
+//@EnableJpaRepositories
 @Transactional
 public interface BookREPO extends JpaRepository<Book, String> {
 
