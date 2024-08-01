@@ -43,7 +43,7 @@ public class BookController {
     @GetMapping(path = {"/book-author-email"}, params = {"email"})
     public Page<ResponseBookSearchByAuthorEmail> getBookByAuthorEmail(@RequestParam(value = "email") String email, @RequestParam(value = "page") int page) {
         Page<ResponseBookSearchByAuthorEmail> books = bookService.getBooksByAuthorEmail(email, page);
-        log.info("Book get Like Page By Author Email: ");
+        log.info("");
         return books;
     }
 
