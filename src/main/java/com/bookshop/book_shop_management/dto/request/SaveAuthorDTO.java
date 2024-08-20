@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class SaveAuthorDTO {
     @NotEmpty
     @Pattern(regexp = "^[a-zA-Z ]+$", message = "only contains simple and capital letters")
-    @Schema(example = "only contains simple and capital letters")
+    @Schema(example = "")
     String firstName;
 
     @NotEmpty

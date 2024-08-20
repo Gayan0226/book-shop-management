@@ -1,0 +1,58 @@
+2024-45-16  10:45:19 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-45-16  10:45:19 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-45-16  10:45:39 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-45-16  10:45:39 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-45-16  10:45:59 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-45-16  10:45:59 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-46-16  10:46:19 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-46-16  10:46:19 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-46-16  10:46:39 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-46-16  10:46:39 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-46-16  10:46:59 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-46-16  10:46:59 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-47-16  10:47:08 [SpringApplicationShutdownHook] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean -  Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-47-16  10:47:08 [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown initiated...
+2024-47-16  10:47:08 [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown completed.
+2024-47-16  10:47:12 [background-preinit] org.hibernate.validator.internal.util.Version INFO  o.h.validator.internal.util.Version -  HV000001: Hibernate Validator 8.0.1.Final
+2024-47-16  10:47:12 [main] org.springframework.boot.StartupInfoLogger INFO  c.b.b.BookShopManagementApplication -  Starting BookShopManagementApplication using Java 17.0.11 with PID 3956 (D:\SpringBootP\book-shop-management\target\classes started by Gyan  chathuranaga in D:\SpringBootP\book-shop-management)
+2024-47-16  10:47:12 [main] org.springframework.boot.SpringApplication INFO  c.b.b.BookShopManagementApplication -  No active profile set, falling back to 1 default profile: "default"
+2024-47-16  10:47:12 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate INFO  o.s.d.r.c.RepositoryConfigurationDelegate -  Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-47-16  10:47:13 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate INFO  o.s.d.r.c.RepositoryConfigurationDelegate -  Finished Spring Data repository scanning in 45 ms. Found 4 JPA repository interfaces.
+2024-47-16  10:47:13 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer INFO  o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat initialized with port 8083 (http)
+2024-47-16  10:47:13 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.coyote.http11.Http11NioProtocol -  Initializing ProtocolHandler ["http-nio-8083"]
+2024-47-16  10:47:13 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.catalina.core.StandardService -  Starting service [Tomcat]
+2024-47-16  10:47:13 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.catalina.core.StandardEngine -  Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-47-16  10:47:13 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring embedded WebApplicationContext
+2024-47-16  10:47:13 [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -  Root WebApplicationContext: initialization completed in 1022 ms
+2024-47-16  10:47:13 [main] org.hibernate.jpa.internal.util.LogHelper INFO  o.h.jpa.internal.util.LogHelper -  HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-47-16  10:47:13 [main] org.hibernate.Version INFO  org.hibernate.Version -  HHH000412: Hibernate ORM core version 6.4.9.Final
+2024-47-16  10:47:13 [main] org.hibernate.cache.internal.RegionFactoryInitiator INFO  o.h.c.i.RegionFactoryInitiator -  HHH000026: Second-level cache disabled
+2024-47-16  10:47:13 [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo INFO  o.s.o.j.p.SpringPersistenceUnitInfo -  No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-47-16  10:47:13 [main] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Starting...
+2024-47-16  10:47:14 [main] com.zaxxer.hikari.pool.HikariPool INFO  com.zaxxer.hikari.pool.HikariPool -  HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@389008d1
+2024-47-16  10:47:14 [main] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Start completed.
+2024-47-16  10:47:14 [main] org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl WARN  org.hibernate.orm.deprecation -  HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-47-16  10:47:14 [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator INFO  o.h.e.t.j.p.i.JtaPlatformInitiator -  HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-47-16  10:47:14 [main] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean -  Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-47-16  10:47:15 [main] org.springframework.data.jpa.repository.query.QueryEnhancerFactory INFO  o.s.d.j.r.query.QueryEnhancerFactory -  Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-47-16  10:47:15 [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration -  spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-47-16  10:47:15 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.coyote.http11.Http11NioProtocol -  Starting ProtocolHandler ["http-nio-8083"]
+2024-47-16  10:47:15 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer INFO  o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat started on port 8083 (http) with context path ''
+2024-47-16  10:47:15 [main] org.springframework.boot.StartupInfoLogger INFO  c.b.b.BookShopManagementApplication -  Started BookShopManagementApplication in 3.818 seconds (process running for 4.421)
+2024-47-16  10:47:15 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-47-16  10:47:15 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-47-16  10:47:35 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-47-16  10:47:35 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-47-16  10:47:55 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-47-16  10:47:55 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-48-16  10:48:15 [http-nio-8083-exec-1] org.apache.juli.logging.DirectJDKLog INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-48-16  10:48:15 [http-nio-8083-exec-1] org.springframework.web.servlet.FrameworkServlet INFO  o.s.web.servlet.DispatcherServlet -  Initializing Servlet 'dispatcherServlet'
+2024-48-16  10:48:15 [http-nio-8083-exec-1] org.springframework.web.servlet.FrameworkServlet INFO  o.s.web.servlet.DispatcherServlet -  Completed initialization in 0 ms
+2024-48-16  10:48:15 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-48-16  10:48:15 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-48-16  10:48:30 [http-nio-8083-exec-7] org.springdoc.core.models.ParameterInfo WARN  o.s.core.models.ParameterInfo -  Using the following default value : like, without spring conversionService
+2024-48-16  10:48:30 [http-nio-8083-exec-7] org.springdoc.api.AbstractOpenApiResource INFO  o.s.api.AbstractOpenApiResource -  Init duration for springdoc-openapi is: 395 ms
+2024-48-16  10:48:35 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-48-16  10:48:35 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-48-16  10:48:55 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-48-16  10:48:55 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
