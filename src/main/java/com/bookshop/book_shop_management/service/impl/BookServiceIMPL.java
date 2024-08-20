@@ -1,5 +1,6 @@
 package com.bookshop.book_shop_management.service.impl;
 
+import com.bookshop.book_shop_management.dto.request.RequestReportPdf;
 import com.bookshop.book_shop_management.dto.request.RequestSaveBookDTO;
 import com.bookshop.book_shop_management.dto.request.RequestUpdateBookDetailsDto;
 import com.bookshop.book_shop_management.dto.responce.RequestAllBookByCategory;
@@ -13,6 +14,12 @@ import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
 import com.bookshop.book_shop_management.reporsitory.BookREPO;
 import com.bookshop.book_shop_management.service.BookService;
 import lombok.RequiredArgsConstructor;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
+import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +28,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.io.ByteArrayOutputStream;
+import java.util.*;
 
 @RequiredArgsConstructor
 @Service
@@ -141,5 +149,32 @@ public class BookServiceIMPL implements BookService {
         } else {
             throw new NotFoundException("There is no book found for email");
         }
+    }
+
+    @Override
+    public ByteArrayOutputStream generateReportPdf() throws JRException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        List<RequestReportPdf> bookDetailList = new ArrayList<>(bookRepo.findAll().stream().map(book -> new RequestReportPdf(
+                book.getIsbnId(),
+                book.getCategory().toString(),
+                book.getBookTitle()
+        )).toList());
+        JasperReport jasperReport = JasperCompileManager.compileReport("D:\\SpringBootP\\book-shop-management\\src\\main\\resources\\report\\bookDetailsReport.jrxml");
+        JRBeanCollectionDataSource bookReportBean = new JRBeanCollectionDataSource(bookDetailList);
+        Map<String, Object> params = new HashMap<>();
+        params.put("bookReportNewDetails", new JRBeanCollectionDataSource(bookDetailList));
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, bookReportBean);
+        JRPdfExporter exporter = new JRPdfExporter();
+        exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+        exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(byteArrayOutputStream));
+        SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
+        configuration.setCompressed(true);
+        configuration.setMetadataAuthor("Gayan");
+        JasperExportManager.exportReportToPdfFile(jasperPrint, "D:\\SpringBootP\\book.pdf");
+        exporter.setConfiguration(configuration);
+
+        exporter.exportReport();
+
+        return byteArrayOutputStream;
     }
 }

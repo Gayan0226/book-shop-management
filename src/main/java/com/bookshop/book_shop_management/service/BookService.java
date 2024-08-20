@@ -5,9 +5,10 @@ import com.bookshop.book_shop_management.dto.request.RequestUpdateBookDetailsDto
 import com.bookshop.book_shop_management.dto.responce.RequestAllBookByCategory;
 import com.bookshop.book_shop_management.dto.responce.ResponseBookSearchByAuthorEmail;
 import com.bookshop.book_shop_management.entity.Book;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.data.domain.Page;
 
-import java.util.List;
+import java.io.ByteArrayOutputStream;
 
 public interface BookService {
     String saveBookDetails(int authorId, RequestSaveBookDTO requestSaveBookDTOok);
@@ -23,4 +24,6 @@ public interface BookService {
     Page<Book> getBookBySearching(String isbn, int page);
 
     Page<ResponseBookSearchByAuthorEmail> getBooksByAuthorEmail(String email, int page);
+
+    ByteArrayOutputStream generateReportPdf() throws JRException;
 }

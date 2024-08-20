@@ -9,13 +9,15 @@ import com.bookshop.book_shop_management.service.BookService;
 import com.bookshop.book_shop_management.util.StandardResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import net.sf.jasperreports.engine.JRException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.ByteArrayOutputStream;
 
 @Validated
 @RestController
@@ -72,5 +74,13 @@ public class BookController {
         Page<Book> books = bookService.getBookBySearching(isbn, page);
         log.info("Book Search Retrieved: ");
         return books;
+    }
+
+    @GetMapping("/pdf")
+    public ResponseEntity getBookPdf() throws JRException {
+        ByteArrayOutputStream arrayOutputStream = bookService.generateReportPdf();
+        HttpHeaders httpHeaders = new HttpHeaders();
+       httpHeaders.setContentType(MediaType.APPLICATION_PDF);
+        return new ResponseEntity(arrayOutputStream.toByteArray(), httpHeaders, HttpStatus.OK);
     }
 }

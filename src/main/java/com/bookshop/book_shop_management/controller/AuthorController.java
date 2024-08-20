@@ -27,7 +27,7 @@ public class AuthorController {
     private final AuthorService authorService;
 
     @PostMapping()
-    public ResponseEntity<StandardResponse> saveAuthor(@RequestBody @Valid SaveAuthorDTO saveAuthorDTO) {
+    public ResponseEntity<StandardResponse> saveAuthor( @Valid @RequestBody  SaveAuthorDTO saveAuthorDTO) {
         String authorName = authorService.saveAuthorDetails(saveAuthorDTO);
         log.info("Author added: ");
         return new ResponseEntity<StandardResponse>(new StandardResponse(200, "Add successful", authorName), HttpStatus.OK);

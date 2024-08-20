@@ -1,5 +1,5 @@
 <configuration>
-    <property name="patternLog" value="%d{yyyy-mm-dd  HH:mm:ss} [%thread] %-5level %logger{36} -  %msg%n"/>
+    <property name="patternLog" value="%d{yyyy-mm-dd  HH:mm:ss} [%thread] %-5C %-5level %logger{36} -  %msg%n"/>
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>
@@ -10,21 +10,21 @@
 
     <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>
-            D:/SpringBootP/logs/application.log
+<!--            D:/SpringBootP-->
+            ./logs/bookshop.log
         </file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>D:/SpringBootP/logs/archive/application-%d{yyyy-MM-dd}-%i.log.text</fileNamePattern>
+            <fileNamePattern>./logs/archive/application-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
             <maxFileSize>10KB</maxFileSize>
-            <maxHistory>1</maxHistory>
+            <maxHistory>10</maxHistory>
         </rollingPolicy>
         <encoder>
             <pattern>
                 ${patternLog}
             </pattern>
         </encoder>
-
-    </appender>
-    <root level="info">
+    </appender>spe
+    <root level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="ROLLING_FILE"/>
     </root>
