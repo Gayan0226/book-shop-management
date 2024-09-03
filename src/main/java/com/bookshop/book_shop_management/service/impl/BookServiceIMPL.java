@@ -13,6 +13,8 @@ import com.bookshop.book_shop_management.exceptions.NotFoundException;
 import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
 import com.bookshop.book_shop_management.reporsitory.BookREPO;
 import com.bookshop.book_shop_management.service.BookService;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -20,6 +22,19 @@ import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.CellRange;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.AreaReference;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.ss.util.CellReference;
+import org.apache.poi.xssf.usermodel.XSSFTable;
+import org.apache.poi.xssf.usermodel.XSSFTableStyleInfo;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +44,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.*;
 
 @RequiredArgsConstructor
@@ -177,4 +193,36 @@ public class BookServiceIMPL implements BookService {
 
         return byteArrayOutputStream;
     }
+
+    @Override
+    public HttpServletResponse generateExcel(HttpServletResponse response) throws IOException {
+
+        List<Book> books = bookRepo.findAll();
+        XSSFWorkbook workBook = new XSSFWorkbook();
+        Sheet sheet = workBook.createSheet("Book_Details");
+        Row row = sheet.createRow(0);
+        row.createCell(0).setCellValue("AuthorID");
+        row.createCell(1).setCellValue("Book Title");
+        row.createCell(2).setCellValue("Create Date");
+        int rowIndex = 1;
+        for (Book book : books) {
+            Row rowNumber = sheet.createRow(rowIndex);
+            rowNumber.createCell(0).setCellValue(book.getAuthor().getAuthorId());
+            rowNumber.createCell(1).setCellValue(book.getBookTitle());
+            rowNumber.createCell(2).setCellValue(book.getCreateTime());
+            rowIndex++;
+        }
+
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        response.setHeader("Content-Disposition", "attachment; filename=book_report.xlsx");
+        ServletOutputStream outputStream = response.getOutputStream();
+        workBook.write(outputStream);
+        workBook.close();
+        outputStream.close();
+
+
+        return null;
+    }
+
+
 }
