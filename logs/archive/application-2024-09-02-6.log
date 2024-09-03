@@ -1,0 +1,116 @@
+2024-17-02  14:17:02 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-17-02  14:17:02 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-17-02  14:17:22 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-17-02  14:17:22 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-17-02  14:17:42 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-17-02  14:17:42 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-18-02  14:18:02 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-18-02  14:18:02 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-18-02  14:18:22 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-18-02  14:18:22 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-18-02  14:18:41 [SpringApplicationShutdownHook] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean -  Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-18-02  14:18:41 [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown initiated...
+2024-18-02  14:18:41 [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown completed.
+2024-18-02  14:18:45 [background-preinit] org.hibernate.validator.internal.util.Version INFO  o.h.validator.internal.util.Version -  HV000001: Hibernate Validator 8.0.1.Final
+2024-18-02  14:18:45 [main] org.springframework.boot.StartupInfoLogger INFO  c.b.b.BookShopManagementApplication -  Starting BookShopManagementApplication using Java 17.0.11 with PID 12924 (E:\SpringBootP\book-shop-management\target\classes started by Gyan  chathuranaga in E:\SpringBootP\book-shop-management)
+2024-18-02  14:18:45 [main] org.springframework.boot.SpringApplication INFO  c.b.b.BookShopManagementApplication -  No active profile set, falling back to 1 default profile: "default"
+2024-18-02  14:18:45 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate INFO  o.s.d.r.c.RepositoryConfigurationDelegate -  Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-18-02  14:18:45 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate INFO  o.s.d.r.c.RepositoryConfigurationDelegate -  Finished Spring Data repository scanning in 57 ms. Found 4 JPA repository interfaces.
+2024-18-02  14:18:46 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer INFO  o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat initialized with port 8083 (http)
+2024-18-02  14:18:46 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.coyote.http11.Http11NioProtocol -  Initializing ProtocolHandler ["http-nio-8083"]
+2024-18-02  14:18:46 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.catalina.core.StandardService -  Starting service [Tomcat]
+2024-18-02  14:18:46 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.catalina.core.StandardEngine -  Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-18-02  14:18:46 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring embedded WebApplicationContext
+2024-18-02  14:18:46 [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -  Root WebApplicationContext: initialization completed in 1056 ms
+2024-18-02  14:18:46 [main] org.hibernate.jpa.internal.util.LogHelper INFO  o.h.jpa.internal.util.LogHelper -  HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-18-02  14:18:46 [main] org.hibernate.Version INFO  org.hibernate.Version -  HHH000412: Hibernate ORM core version 6.4.9.Final
+2024-18-02  14:18:46 [main] org.hibernate.cache.internal.RegionFactoryInitiator INFO  o.h.c.i.RegionFactoryInitiator -  HHH000026: Second-level cache disabled
+2024-18-02  14:18:46 [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo INFO  o.s.o.j.p.SpringPersistenceUnitInfo -  No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-18-02  14:18:46 [main] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Starting...
+2024-18-02  14:18:46 [main] com.zaxxer.hikari.pool.HikariPool INFO  com.zaxxer.hikari.pool.HikariPool -  HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1b25d695
+2024-18-02  14:18:46 [main] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Start completed.
+2024-18-02  14:18:46 [main] org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl WARN  org.hibernate.orm.deprecation -  HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-18-02  14:18:47 [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator INFO  o.h.e.t.j.p.i.JtaPlatformInitiator -  HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-18-02  14:18:47 [main] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean -  Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-18-02  14:18:47 [main] org.springframework.data.jpa.repository.query.QueryEnhancerFactory INFO  o.s.d.j.r.query.QueryEnhancerFactory -  Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-18-02  14:18:48 [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration -  spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-18-02  14:18:48 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.coyote.http11.Http11NioProtocol -  Starting ProtocolHandler ["http-nio-8083"]
+2024-18-02  14:18:48 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer INFO  o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat started on port 8083 (http) with context path ''
+2024-18-02  14:18:48 [main] org.springframework.boot.StartupInfoLogger INFO  c.b.b.BookShopManagementApplication -  Started BookShopManagementApplication in 3.78 seconds (process running for 4.342)
+2024-18-02  14:18:48 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-18-02  14:18:48 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-18-02  14:18:54 [http-nio-8083-exec-1] org.apache.juli.logging.DirectJDKLog INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-18-02  14:18:54 [http-nio-8083-exec-1] org.springframework.web.servlet.FrameworkServlet INFO  o.s.web.servlet.DispatcherServlet -  Initializing Servlet 'dispatcherServlet'
+2024-18-02  14:18:54 [http-nio-8083-exec-1] org.springframework.web.servlet.FrameworkServlet INFO  o.s.web.servlet.DispatcherServlet -  Completed initialization in 1 ms
+2024-18-02  14:18:55 [http-nio-8083-exec-1] org.apache.juli.logging.DirectJDKLog ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] -  Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "org.apache.poi.xssf.usermodel.XSSFTableStyleInfo.setName(String)" because "style" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "org.apache.poi.xssf.usermodel.XSSFTableStyleInfo.setName(String)" because "style" is null
+	at com.bookshop.book_shop_management.service.impl.BookServiceIMPL.generateExcel(BookServiceIMPL.java:228)
+	at com.bookshop.book_shop_management.controller.BookController.genarateExcel(BookController.java:90)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:174)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720)
+	at com.bookshop.book_shop_management.controller.BookController$$SpringCGLIB$$0.genarateExcel(<generated>)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2024-19-02  14:19:08 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-19-02  14:19:08 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-19-02  14:19:28 [SpringApplicationShutdownHook] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean -  Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-19-02  14:19:28 [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown initiated...
+2024-19-02  14:19:28 [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown completed.

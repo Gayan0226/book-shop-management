@@ -7,17 +7,22 @@ import com.bookshop.book_shop_management.dto.responce.ResponseBookSearchByAuthor
 import com.bookshop.book_shop_management.entity.Book;
 import com.bookshop.book_shop_management.service.BookService;
 import com.bookshop.book_shop_management.util.StandardResponse;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import net.sf.jasperreports.engine.JRException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
-import org.springframework.http.*;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 @Validated
 @RestController
@@ -82,5 +87,16 @@ public class BookController {
         HttpHeaders httpHeaders = new HttpHeaders();
        httpHeaders.setContentType(MediaType.APPLICATION_PDF);
         return new ResponseEntity(arrayOutputStream.toByteArray(), httpHeaders, HttpStatus.OK);
+    }
+    @GetMapping("/excelReport")
+    public  ResponseEntity<StandardResponse> genarateExcel(HttpServletResponse response) throws IOException {
+        HttpServletResponse x = bookService.generateExcel(response);
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(
+                        201,
+                        "Mesage",
+                        "x"
+                ),HttpStatus.OK
+        );
     }
 }

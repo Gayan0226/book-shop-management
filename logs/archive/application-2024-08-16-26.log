@@ -1,7 +1,0 @@
-2024-58-16  14:58:12 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
-2024-58-16  14:58:12 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
-2024-58-16  14:58:32 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
-2024-58-16  14:58:32 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
-2024-58-16  14:58:32 [SpringApplicationShutdownHook] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean -  Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-58-16  14:58:32 [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown initiated...
-2024-58-16  14:58:32 [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown completed.

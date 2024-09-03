@@ -1,0 +1,62 @@
+2024-22-02  14:22:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-22-02  14:22:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-23-02  14:23:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-23-02  14:23:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-23-02  14:23:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-23-02  14:23:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-23-02  14:23:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-23-02  14:23:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-24-02  14:24:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-24-02  14:24:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-24-02  14:24:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-24-02  14:24:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-24-02  14:24:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-24-02  14:24:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-25-02  14:25:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-25-02  14:25:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-25-02  14:25:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-25-02  14:25:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-25-02  14:25:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-25-02  14:25:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-26-02  14:26:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-26-02  14:26:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-26-02  14:26:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-26-02  14:26:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-26-02  14:26:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-26-02  14:26:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-27-02  14:27:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-27-02  14:27:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-27-02  14:27:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-27-02  14:27:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-27-02  14:27:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-27-02  14:27:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-28-02  14:28:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-28-02  14:28:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-28-02  14:28:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-28-02  14:28:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-28-02  14:28:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-28-02  14:28:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-29-02  14:29:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-29-02  14:29:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-29-02  14:29:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-29-02  14:29:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-29-02  14:29:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-29-02  14:29:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-30-02  14:30:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-30-02  14:30:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-30-02  14:30:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-30-02  14:30:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-30-02  14:30:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-30-02  14:30:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-31-02  14:31:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-31-02  14:31:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-31-02  14:31:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-31-02  14:31:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-31-02  14:31:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-31-02  14:31:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-32-02  14:32:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-32-02  14:32:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-32-02  14:32:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-32-02  14:32:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2024-32-02  14:32:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
+2024-32-02  14:32:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email

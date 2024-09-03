@@ -5,10 +5,12 @@ import com.bookshop.book_shop_management.dto.request.RequestUpdateBookDetailsDto
 import com.bookshop.book_shop_management.dto.responce.RequestAllBookByCategory;
 import com.bookshop.book_shop_management.dto.responce.ResponseBookSearchByAuthorEmail;
 import com.bookshop.book_shop_management.entity.Book;
+import jakarta.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.data.domain.Page;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public interface BookService {
     String saveBookDetails(int authorId, RequestSaveBookDTO requestSaveBookDTOok);
@@ -26,4 +28,6 @@ public interface BookService {
     Page<ResponseBookSearchByAuthorEmail> getBooksByAuthorEmail(String email, int page);
 
     ByteArrayOutputStream generateReportPdf() throws JRException;
+
+    HttpServletResponse generateExcel(HttpServletResponse response) throws IOException;
 }
