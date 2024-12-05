@@ -55,10 +55,10 @@ public class AuthorController {
     }
 
     @GetMapping(path = {"/get-authors"}, params = {"page"})
-    public List<String> getAllAuthors(@RequestParam(value = "page") int page) {
+    public List<Author> getAllAuthors(@RequestParam(value = "page") int page) {
         List<Author> authors = authorService.getAllAuthors(page);
         log.info("Author List : ");
-        return authors.stream().map(Author::getFirstName).collect(Collectors.toList());
+        return authors;
     }
 
 }
