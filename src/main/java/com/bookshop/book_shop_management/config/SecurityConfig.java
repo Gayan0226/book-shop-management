@@ -17,11 +17,14 @@ public class SecurityConfig {
         return http
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
-//                .authorizeHttpRequests(request->request.requestMatchers(HttpMethod.POST,"/api/v1/author/save")
-//                        .permitAll()
-//                        .anyRequest()
-//                        .authenticated()
-//                )
+                .authorizeHttpRequests(request->request
+                        .requestMatchers(HttpMethod.POST,"/api/v1/author/save")
+                        .permitAll()
+                        .requestMatchers(HttpMethod.POST,"api/v1/user-controller/user-registered")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated()
+                )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                 .build();
