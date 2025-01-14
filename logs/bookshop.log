@@ -1,10 +1,56 @@
-2024-56-02  16:56:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
-2024-56-02  16:56:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
-2024-56-02  16:56:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
-2024-56-02  16:56:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
-2024-56-02  16:56:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
-2024-56-02  16:56:56 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
-2024-57-02  16:57:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
-2024-57-02  16:57:16 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
-2024-57-02  16:57:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React Table Empty!
-2024-57-02  16:57:36 [scheduling-1] com.bookshop.book_shop_management.service.impl.EmailServiceSchedule ERROR c.b.b.s.impl.EmailServiceSchedule -  There Is Not Valid Email
+2025-57-14  14:57:41 [SpringApplicationShutdownHook] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean -  Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-57-14  14:57:41 [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown initiated...
+2025-57-14  14:57:41 [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown completed.
+2025-57-14  14:57:47 [background-preinit] org.hibernate.validator.internal.util.Version INFO  o.h.validator.internal.util.Version -  HV000001: Hibernate Validator 8.0.1.Final
+2025-57-14  14:57:48 [main] org.springframework.boot.StartupInfoLogger INFO  c.b.b.BookShopManagementApplication -  Starting BookShopManagementApplication using Java 17.0.11 with PID 4168 (F:\Spring Boot\book-shop-management\target\classes started by DMGCD in F:\Spring Boot\book-shop-management)
+2025-57-14  14:57:48 [main] org.springframework.boot.SpringApplication INFO  c.b.b.BookShopManagementApplication -  No active profile set, falling back to 1 default profile: "default"
+2025-57-14  14:57:49 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate INFO  o.s.d.r.c.RepositoryConfigurationDelegate -  Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-57-14  14:57:49 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate INFO  o.s.d.r.c.RepositoryConfigurationDelegate -  Finished Spring Data repository scanning in 62 ms. Found 4 JPA repository interfaces.
+2025-57-14  14:57:49 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer INFO  o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat initialized with port 8083 (http)
+2025-57-14  14:57:49 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.coyote.http11.Http11NioProtocol -  Initializing ProtocolHandler ["http-nio-8083"]
+2025-57-14  14:57:49 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.catalina.core.StandardService -  Starting service [Tomcat]
+2025-57-14  14:57:49 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.catalina.core.StandardEngine -  Starting Servlet engine: [Apache Tomcat/10.1.25]
+2025-57-14  14:57:49 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring embedded WebApplicationContext
+2025-57-14  14:57:49 [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -  Root WebApplicationContext: initialization completed in 1890 ms
+2025-57-14  14:57:50 [main] org.hibernate.jpa.internal.util.LogHelper INFO  o.h.jpa.internal.util.LogHelper -  HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-57-14  14:57:50 [main] org.hibernate.Version INFO  org.hibernate.Version -  HHH000412: Hibernate ORM core version 6.4.9.Final
+2025-57-14  14:57:50 [main] org.hibernate.cache.internal.RegionFactoryInitiator INFO  o.h.c.i.RegionFactoryInitiator -  HHH000026: Second-level cache disabled
+2025-57-14  14:57:50 [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo INFO  o.s.o.j.p.SpringPersistenceUnitInfo -  No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-57-14  14:57:50 [main] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Starting...
+2025-57-14  14:57:50 [main] com.zaxxer.hikari.pool.HikariPool INFO  com.zaxxer.hikari.pool.HikariPool -  HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@21c99abf
+2025-57-14  14:57:50 [main] com.zaxxer.hikari.HikariDataSource INFO  com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Start completed.
+2025-57-14  14:57:50 [main] org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl WARN  org.hibernate.orm.deprecation -  HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-57-14  14:57:51 [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator INFO  o.h.e.t.j.p.i.JtaPlatformInitiator -  HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-57-14  14:57:52 [main] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean -  Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-57-14  14:57:52 [main] org.springframework.data.jpa.repository.query.QueryEnhancerFactory INFO  o.s.d.j.r.query.QueryEnhancerFactory -  Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-57-14  14:57:52 [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration -  spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-57-14  14:57:52 [main] org.springframework.security.web.DefaultSecurityFilterChain INFO  o.s.s.web.DefaultSecurityFilterChain -  Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1b5df8b7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1651bd68, org.springframework.security.web.context.SecurityContextHolderFilter@7aaf0f0a, org.springframework.security.web.header.HeaderWriterFilter@5982255e, org.springframework.web.filter.CorsFilter@44a25dc7, org.springframework.security.web.authentication.logout.LogoutFilter@1704437b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@77e42cbf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5db6083b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3fc064cb, org.springframework.security.web.session.SessionManagementFilter@5379488c, org.springframework.security.web.access.ExceptionTranslationFilter@209baf91]
+2025-57-14  14:57:53 [main] org.apache.juli.logging.DirectJDKLog INFO  o.a.coyote.http11.Http11NioProtocol -  Starting ProtocolHandler ["http-nio-8083"]
+2025-57-14  14:57:53 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer INFO  o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat started on port 8083 (http) with context path ''
+2025-57-14  14:57:53 [main] org.springframework.boot.StartupInfoLogger INFO  c.b.b.BookShopManagementApplication -  Started BookShopManagementApplication in 5.812 seconds (process running for 6.55)
+2025-57-14  14:57:54 [http-nio-8083-exec-1] org.apache.juli.logging.DirectJDKLog INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-57-14  14:57:54 [http-nio-8083-exec-1] org.springframework.web.servlet.FrameworkServlet INFO  o.s.web.servlet.DispatcherServlet -  Initializing Servlet 'dispatcherServlet'
+2025-57-14  14:57:54 [http-nio-8083-exec-1] org.springframework.web.servlet.FrameworkServlet INFO  o.s.web.servlet.DispatcherServlet -  Completed initialization in 1 ms
+2025-57-14  14:57:56 [http-nio-8083-exec-1] com.bookshop.book_shop_management.service.impl.BookServiceIMPL INFO  c.b.b.service.impl.BookServiceIMPL -  Report saved to file system at location: /app/pdf_files/BookDetails_2025-01-14.pdf
+2025-58-14  14:58:34 [http-nio-8083-exec-3] com.bookshop.book_shop_management.service.impl.BookServiceIMPL INFO  c.b.b.service.impl.BookServiceIMPL -  Report saved to file system at location: /app/pdf_files/BookDetails_2025-01-14.pdf
+2025-58-14  14:58:41 [http-nio-8083-exec-4] com.bookshop.book_shop_management.service.impl.BookServiceIMPL INFO  c.b.b.service.impl.BookServiceIMPL -  Report saved to file system at location: /app/excel_files/BookShop2025-01-14.xlsx
+2025-03-14  15:03:36 [http-nio-8083-exec-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  Book DisLike Count
+2025-03-14  15:03:36 [http-nio-8083-exec-1] com.bookshop.book_shop_management.controller.ReactController INFO  c.b.b.controller.ReactController -  Dis Like Book Successful 
+2025-08-14  15:08:03 [http-nio-8083-exec-2] com.bookshop.book_shop_management.service.impl.UserServiceIMPL INFO  c.b.b.service.impl.UserServiceIMPL -  Add user : User(userId=1, userName=string, password=string, userContact=string, react=null)
+2025-08-14  15:08:03 [http-nio-8083-exec-2] com.bookshop.book_shop_management.controller.UserController INFO  c.b.b.controller.UserController -  User added: 
+2025-08-14  15:08:06 [http-nio-8083-exec-1] com.bookshop.book_shop_management.service.impl.UserServiceIMPL INFO  c.b.b.service.impl.UserServiceIMPL -  Add user : User(userId=2, userName=string, password=string, userContact=string, react=null)
+2025-08-14  15:08:06 [http-nio-8083-exec-1] com.bookshop.book_shop_management.controller.UserController INFO  c.b.b.controller.UserController -  User added: 
+2025-08-14  15:08:07 [http-nio-8083-exec-3] com.bookshop.book_shop_management.service.impl.UserServiceIMPL INFO  c.b.b.service.impl.UserServiceIMPL -  Add user : User(userId=3, userName=string, password=string, userContact=string, react=null)
+2025-08-14  15:08:07 [http-nio-8083-exec-3] com.bookshop.book_shop_management.controller.UserController INFO  c.b.b.controller.UserController -  User added: 
+2025-09-14  15:09:43 [http-nio-8083-exec-8] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React added
+2025-09-14  15:09:43 [http-nio-8083-exec-8] com.bookshop.book_shop_management.controller.ReactController INFO  c.b.b.controller.ReactController -  React to book Successful 
+2025-09-14  15:09:56 [http-nio-8083-exec-5] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  Book Like Count
+2025-09-14  15:09:56 [http-nio-8083-exec-5] com.bookshop.book_shop_management.controller.ReactController INFO  c.b.b.controller.ReactController -  Book like Successful 
+2025-10-14  15:10:08 [http-nio-8083-exec-2] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React added
+2025-10-14  15:10:08 [http-nio-8083-exec-2] com.bookshop.book_shop_management.controller.ReactController INFO  c.b.b.controller.ReactController -  React to book Successful 
+2025-10-14  15:10:11 [http-nio-8083-exec-1] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React added
+2025-10-14  15:10:11 [http-nio-8083-exec-1] com.bookshop.book_shop_management.controller.ReactController INFO  c.b.b.controller.ReactController -  React to book Successful 
+2025-10-14  15:10:18 [http-nio-8083-exec-3] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  React added
+2025-10-14  15:10:18 [http-nio-8083-exec-3] com.bookshop.book_shop_management.controller.ReactController INFO  c.b.b.controller.ReactController -  React to book Successful 
+2025-10-14  15:10:24 [http-nio-8083-exec-4] com.bookshop.book_shop_management.service.impl.ReactServiceIMPL INFO  c.b.b.service.impl.ReactServiceIMPL -  Book Like Count
+2025-10-14  15:10:24 [http-nio-8083-exec-4] com.bookshop.book_shop_management.controller.ReactController INFO  c.b.b.controller.ReactController -  Book like Successful 

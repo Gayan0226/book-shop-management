@@ -90,12 +90,12 @@ public class BookController {
     }
     @GetMapping("/excelReport")
     public  ResponseEntity<StandardResponse> genarateExcel(HttpServletResponse response) throws IOException {
-        HttpServletResponse x = bookService.generateExcel(response);
+        byte[] x = bookService.generateExcel(response);
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(
                         201,
                         "Mesage",
-                        "x"
+                        x
                 ),HttpStatus.OK
         );
     }

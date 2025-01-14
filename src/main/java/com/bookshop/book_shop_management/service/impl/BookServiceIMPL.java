@@ -13,7 +13,6 @@ import com.bookshop.book_shop_management.exceptions.NotFoundException;
 import com.bookshop.book_shop_management.reporsitory.AuthorREPO;
 import com.bookshop.book_shop_management.reporsitory.BookREPO;
 import com.bookshop.book_shop_management.service.BookService;
-import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import net.sf.jasperreports.engine.*;
@@ -22,6 +21,7 @@ import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -34,7 +34,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.time.LocalDate;
 import java.util.*;
 
 @RequiredArgsConstructor
@@ -165,7 +168,9 @@ public class BookServiceIMPL implements BookService {
                 book.getCategory().toString(),
                 book.getBookTitle()
         )).toList());
-        JasperReport jasperReport = JasperCompileManager.compileReport("D:\\SpringBootP\\book-shop-management\\src\\main\\resources\\report\\bookDetailsReport.jrxml");
+        InputStream resourceAsStream = this.getClass().getResourceAsStream("/report/bookDetailsReport.jrxml");
+
+        JasperReport jasperReport = JasperCompileManager.compileReport(resourceAsStream);
         JRBeanCollectionDataSource bookReportBean = new JRBeanCollectionDataSource(bookDetailList);
         Map<String, Object> params = new HashMap<>();
         params.put("bookReportNewDetails", new JRBeanCollectionDataSource(bookDetailList));
@@ -176,7 +181,14 @@ public class BookServiceIMPL implements BookService {
         SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
         configuration.setCompressed(true);
         configuration.setMetadataAuthor("Gayan");
-        JasperExportManager.exportReportToPdfFile(jasperPrint, "D:\\SpringBootP\\book.pdf");
+        String filePath = "/app/pdf_files/" + jasperPrint.getName() + "_" + LocalDate.now() + ".pdf";
+        byte[] currentReport = JasperExportManager.exportReportToPdf(jasperPrint);
+        try {
+            FileUtils.writeByteArrayToFile(new File(filePath), currentReport);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        log.info("Report saved to file system at location: {}", filePath);
         exporter.setConfiguration(configuration);
 
         exporter.exportReport();
@@ -185,11 +197,13 @@ public class BookServiceIMPL implements BookService {
     }
 
     @Override
-    public HttpServletResponse generateExcel(HttpServletResponse response) throws IOException {
-
+    public byte[] generateExcel(HttpServletResponse response) throws IOException {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         List<Book> books = bookRepo.findAll();
         XSSFWorkbook workBook = new XSSFWorkbook();
+        String reportName = "BookShop" + LocalDate.now();
         Sheet sheet = workBook.createSheet("Book_Details");
+        String filePath = "/app/excel_files/" + reportName + ".xlsx";
         Row row = sheet.createRow(0);
         row.createCell(0).setCellValue("AuthorID");
         row.createCell(1).setCellValue("Book Title");
@@ -202,16 +216,16 @@ public class BookServiceIMPL implements BookService {
             rowNumber.createCell(2).setCellValue(book.getCreateTime());
             rowIndex++;
         }
-
+// Write the data to the HTTP response output stream.
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         response.setHeader("Content-Disposition", "attachment; filename=book_report.xlsx");
-        ServletOutputStream outputStream = response.getOutputStream();
         workBook.write(outputStream);
         workBook.close();
         outputStream.close();
+        FileUtils.writeByteArrayToFile(new File(filePath), outputStream.toByteArray());
+        log.info("Report saved to file system at location: {}", filePath);
 
-
-        return null;
+        return outputStream.toByteArray();
     }
 
 

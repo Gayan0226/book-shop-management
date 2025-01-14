@@ -48,16 +48,6 @@
                 <artifactId>poi-ooxml</artifactId>
                 <version>5.2.3</version>
             </dependency>
-
-
-
-
-        <!-- Spring Boot Starter Web for basic web functionalities -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.3.1</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -111,7 +101,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.4.12</version> <!-- Use the latest version -->
+                    <version>1.4.12</version>
         </dependency>
 
         <!-- JasperReports core library -->
@@ -128,18 +118,11 @@
             <artifactId>jasperreports-fonts</artifactId>
             <version>6.21.3</version>
         </dependency>
-
-
-<!--        &lt;!&ndash; BouncyCastle Security (if needed) &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.bouncycastle</groupId>-->
-<!--            <artifactId>bcprov-jdk15on</artifactId>-->
-<!--            <version>1.68</version>-->
-<!--        </dependency>-->
-
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>

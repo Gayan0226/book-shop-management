@@ -26,7 +26,7 @@ public class AuthorController {
     private static final Logger log = LoggerFactory.getLogger(AuthorController.class);
     private final AuthorService authorService;
 
-    @PostMapping()
+    @PostMapping("/save")
     public ResponseEntity<StandardResponse> saveAuthor( @Valid @RequestBody  SaveAuthorDTO saveAuthorDTO) {
         String authorName = authorService.saveAuthorDetails(saveAuthorDTO);
         log.info("Author added: ");
@@ -44,7 +44,7 @@ public class AuthorController {
     public ResponseEntity<StandardResponse> deleteAuthorById(@RequestParam(value = "id") int id) {
         boolean deleted = authorService.authorDeletedByID(id);
         log.info("Author Deleted by Id: ");
-        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "Updated", deleted), HttpStatus.OK);
+        return new ResponseEntity<StandardResponse>(new StandardResponse(200, "Deleted", deleted), HttpStatus.OK);
     }
 
     @GetMapping(path = {"/get-author-by-id"}, params = {"id"})
@@ -55,10 +55,10 @@ public class AuthorController {
     }
 
     @GetMapping(path = {"/get-authors"}, params = {"page"})
-    public List<String> getAllAuthors(@RequestParam(value = "page") int page) {
+    public List<Author> getAllAuthors(@RequestParam(value = "page") int page) {
         List<Author> authors = authorService.getAllAuthors(page);
         log.info("Author List : ");
-        return authors.stream().map(Author::getFirstName).collect(Collectors.toList());
+        return authors;
     }
 
 }
