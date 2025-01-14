@@ -29,5 +29,5 @@ public interface BookService {
 
     ByteArrayOutputStream generateReportPdf() throws JRException;
 
-    HttpServletResponse generateExcel(HttpServletResponse response) throws IOException;
+    byte[] generateExcel(HttpServletResponse response) throws IOException;
 }

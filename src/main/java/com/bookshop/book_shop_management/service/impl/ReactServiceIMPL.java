@@ -31,7 +31,7 @@ public class ReactServiceIMPL implements ReactService {
     private final UserRepo userRepo;
 
     private final BookREPO bookRepo;
-
+//TODO React validate Available
     @Override
     public String setReactOneBook(RequestUserToReactBookDTO reacts, int userId) {
         Optional<User> user = userRepo.findById(userId);
