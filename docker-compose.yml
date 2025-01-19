@@ -1,0 +1,24 @@
+services:
+  bookshop:
+    container_name: bookshop
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8083"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/bookshop
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - mysql-db
+#Mysql Server
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: bookshop
+
