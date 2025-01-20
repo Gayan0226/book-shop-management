@@ -33,7 +33,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request->request
+                                .authorizeHttpRequests(request->request
                         .requestMatchers(
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**")
@@ -45,7 +45,7 @@ public class SecurityConfig {
                         .anyRequest()
                         .authenticated()
                 )
-                .httpBasic(Customizer.withDefaults())
+//                .httpBasic(Customizer.withDefaults())
 
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(onceFilter, UsernamePasswordAuthenticationFilter.class)
