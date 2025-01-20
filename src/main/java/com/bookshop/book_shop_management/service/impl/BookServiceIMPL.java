@@ -181,7 +181,7 @@ public class BookServiceIMPL implements BookService {
         SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
         configuration.setCompressed(true);
         configuration.setMetadataAuthor("Gayan");
-        String filePath = "/app/pdf_files/" + jasperPrint.getName() + "_" + LocalDate.now() + ".pdf";
+        String filePath = "/apps/pdf_files/" + jasperPrint.getName() + "_" + LocalDate.now() + ".pdf";
         byte[] currentReport = JasperExportManager.exportReportToPdf(jasperPrint);
         try {
             FileUtils.writeByteArrayToFile(new File(filePath), currentReport);
