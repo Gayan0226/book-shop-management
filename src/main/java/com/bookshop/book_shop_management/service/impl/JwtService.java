@@ -1,9 +1,11 @@
 package com.bookshop.book_shop_management.service.impl;
 
+import com.bookshop.book_shop_management.exceptions.JwtInvalid;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SignatureException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -39,11 +41,16 @@ public class JwtService {
     }
 
     private Claims extractAllClaim(String token) {
-        return Jwts.parser()
-                .verifyWith(getKey())
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
+        try{
+            return Jwts.parser()
+                    .verifyWith(getKey())
+                    .build()
+                    .parseSignedClaims(token)
+                    .getPayload();
+        }
+        catch (SignatureException ex){
+            throw new JwtInvalid("Token MistMatched !");
+        }
     }
 
     public SecretKey getKey() {

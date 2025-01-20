@@ -188,7 +188,7 @@ public class BookServiceIMPL implements BookService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        log.info("Report saved to file system at location: {}", filePath);
+        log.info("Pdf Report saved to file system at location: {}", filePath);
         exporter.setConfiguration(configuration);
 
         exporter.exportReport();
@@ -223,7 +223,7 @@ public class BookServiceIMPL implements BookService {
         workBook.close();
         outputStream.close();
         FileUtils.writeByteArrayToFile(new File(filePath), outputStream.toByteArray());
-        log.info("Report saved to file system at location: {}", filePath);
+        log.info("Excel Report saved to file system at location: {}", filePath);
 
         return outputStream.toByteArray();
     }

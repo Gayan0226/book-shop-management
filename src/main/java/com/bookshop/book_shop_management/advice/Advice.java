@@ -1,6 +1,7 @@
 package com.bookshop.book_shop_management.advice;
 
 import com.bookshop.book_shop_management.exceptions.DuplicateValueException;
+import com.bookshop.book_shop_management.exceptions.JwtInvalid;
 import com.bookshop.book_shop_management.exceptions.NotFoundException;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.security.SignatureException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +23,12 @@ public class Advice {
     public Map<String, Object> handleNotFoundException(NotFoundException e) {
         Map<String, Object> response = new HashMap<>();
         response.put("message", e.getMessage());
+        return response;
+    }
+    @ExceptionHandler(JwtInvalid.class)
+    public Map<String,Object> handleJwtInvalidException(JwtInvalid ex){
+        Map<String,Object>response= new HashMap<>();
+        response.put("Invalid Jwt",ex.getMessage());
         return response;
     }
     @ResponseStatus(HttpStatus.BAD_REQUEST)

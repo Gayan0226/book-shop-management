@@ -84,18 +84,18 @@ public class BookController {
     @GetMapping("/pdf")
     public ResponseEntity getBookPdf() throws JRException {
         ByteArrayOutputStream arrayOutputStream = bookService.generateReportPdf();
-        HttpHeaders httpHeaders = new HttpHeaders();
-       httpHeaders.setContentType(MediaType.APPLICATION_PDF);
-        return new ResponseEntity(arrayOutputStream.toByteArray(), httpHeaders, HttpStatus.OK);
+//        HttpHeaders httpHeaders = new HttpHeaders();
+//       httpHeaders.setContentType(MediaType.APPLICATION_PDF);
+        return new ResponseEntity(arrayOutputStream.toByteArray(), HttpStatus.OK);
     }
     @GetMapping("/excelReport")
     public  ResponseEntity<StandardResponse> genarateExcel(HttpServletResponse response) throws IOException {
-        byte[] x = bookService.generateExcel(response);
+        byte[] excel = bookService.generateExcel(response);
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(
                         201,
                         "Mesage",
-                        x
+                        excel
                 ),HttpStatus.OK
         );
     }
