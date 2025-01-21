@@ -1,9 +1,10 @@
 services:
   bookshop:
     container_name: bookshop
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: gayan0226/bookshop:test5
+    volumes:
+      - ./log_details:/logs
+      - ./pdfF:/apps
     ports:
       - "8080:8083"
     environment:
@@ -11,14 +12,32 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
     depends_on:
-      - mysql-db
-#Mysql Server
+      mysql-db:
+        condition: service_healthy
+    networks:
+      - bookshop_network
+
   mysql-db:
     image: mysql:8.0
     container_name: mysql-db
-    restart: always
+    restart: on-failure
     ports:
       - "3307:3306"
     environment:
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: bookshop
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - bookshop_network
 
+volumes:
+  log_details:
+  pdfF:
+
+networks:
+  bookshop_network:
+    driver: bridge
