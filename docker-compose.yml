@@ -1,7 +1,7 @@
 services:
   bookshop:
     container_name: bookshop
-    image: gayan0226/bookshop:test5
+    image: gayan0226/bookshop:test11
     volumes:
       - ./log_details:/logs
       - ./pdfF:/apps
