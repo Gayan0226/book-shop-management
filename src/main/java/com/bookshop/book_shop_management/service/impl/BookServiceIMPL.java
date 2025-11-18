@@ -181,14 +181,14 @@ public class BookServiceIMPL implements BookService {
         SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
         configuration.setCompressed(true);
         configuration.setMetadataAuthor("Gayan");
-        String filePath = "/app/pdf_files/" + jasperPrint.getName() + "_" + LocalDate.now() + ".pdf";
+        String filePath = "/apps/pdf_files/" + jasperPrint.getName() + "_" + LocalDate.now() + ".pdf";
         byte[] currentReport = JasperExportManager.exportReportToPdf(jasperPrint);
         try {
             FileUtils.writeByteArrayToFile(new File(filePath), currentReport);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        log.info("Report saved to file system at location: {}", filePath);
+        log.info("Pdf Report saved to file system at location: {}", filePath);
         exporter.setConfiguration(configuration);
 
         exporter.exportReport();
@@ -223,7 +223,7 @@ public class BookServiceIMPL implements BookService {
         workBook.close();
         outputStream.close();
         FileUtils.writeByteArrayToFile(new File(filePath), outputStream.toByteArray());
-        log.info("Report saved to file system at location: {}", filePath);
+        log.info("Excel Report saved to file system at location: {}", filePath);
 
         return outputStream.toByteArray();
     }

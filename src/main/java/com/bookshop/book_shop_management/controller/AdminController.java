@@ -6,7 +6,7 @@ import com.bookshop.book_shop_management.service.AdminService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/api/v1/admin")
 @CrossOrigin
 public class AdminController {
     private final AdminService adminService;
@@ -18,5 +18,10 @@ public class AdminController {
     @PostMapping("/save")
     public Admin saveAdmin(@RequestBody AdminDto adminDto){
         return adminService.saveAdmin(adminDto);
+    }
+
+    @PostMapping("/generateToken")
+    public String generateToken(@RequestBody AdminDto adminDto){
+        return adminService.generateToken(adminDto);
     }
 }
